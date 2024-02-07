@@ -1,0 +1,152 @@
+[
+    {
+        "py/object": "__main__.Mission",
+        "campaign": "Test",
+        "modset": "Test",
+        "op": "Test",
+        "date": {
+            "py/object": "datetime.datetime",
+            "__reduce__": [
+                {
+                    "py/type": "datetime.datetime"
+                },
+                [
+                    "B+gCBRMAAAAAAA=="
+                ]
+            ]
+        },
+        "description": "For Keeps Chinese troops have received reinforcements, and with that it seems, new orders. They are preparing a large assault across the rover north-west of Hanoi. China is under a lot of pressure from the soviet union and the eyes of the world are upon them. If we can thwart the Chinese attack and deny them the city they will most likely have to risk all out war within the eastern block or cut their losses. Let us hope it will be the latter.",
+        "sides": [
+            {
+                "py/object": "__main__.Side",
+                "side": {
+                    "py/reduce": [
+                        {
+                            "py/type": "__main__.Sides"
+                        },
+                        {
+                            "py/tuple": [
+                                1
+                            ]
+                        }
+                    ]
+                },
+                "divisions": [
+                    {
+                        "py/object": "__main__.Division",
+                        "name": "TestDivision",
+                        "subdivisions": [
+                            {
+                                "py/object": "__main__.Subdivision",
+                                "name": "BLUE",
+                                "roles": [
+                                    {
+                                        "py/reduce": [
+                                            {
+                                                "py/type": "__main__.Roles"
+                                            },
+                                            {
+                                                "py/tuple": [
+                                                    1
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "py/reduce": [
+                                            {
+                                                "py/type": "__main__.Roles"
+                                            },
+                                            {
+                                                "py/tuple": [
+                                                    5
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "channel": 945787764350259200,
+        "id": 0
+    },
+    {
+        "py/object": "__main__.Mission",
+        "campaign": "test",
+        "modset": "test",
+        "op": "test",
+        "date": {
+            "py/object": "datetime.datetime",
+            "__reduce__": [
+                {
+                    "py/type": "datetime.datetime"
+                },
+                [
+                    "B+gCBxMPAAAAAA=="
+                ]
+            ]
+        },
+        "description": "",
+        "sides": [
+            {
+                "py/object": "__main__.Side",
+                "side": {
+                    "py/id": 5
+                },
+                "divisions": [
+                    {
+                        "py/object": "__main__.Division",
+                        "name": "MyDivision",
+                        "subdivisions": [
+                            {
+                                "py/object": "__main__.Subdivision",
+                                "name": "Blue",
+                                "roles": [
+                                    {
+                                        "py/reduce": [
+                                            {
+                                                "py/type": "__main__.Roles"
+                                            },
+                                            {
+                                                "py/tuple": [
+                                                    7
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "channel": 945787764350259200,
+        "id": 1
+    },
+    {
+        "py/object": "__main__.Mission",
+        "campaign": "Sinoviet",
+        "modset": "Sinoviet",
+        "op": "For Keeps",
+        "date": {
+            "py/object": "datetime.datetime",
+            "__reduce__": [
+                {
+                    "py/type": "datetime.datetime"
+                },
+                [
+                    "B+gCBxQAAAAAAA=="
+                ]
+            ]
+        },
+        "description": "",
+        "sides": [],
+        "channel": 945787764350259200,
+        "id": 2
+    }
+]
