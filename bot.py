@@ -40,27 +40,29 @@ class Sides(enum.Enum):
 class Roles(enum.Enum):
     SquadLeader = 1
     TeamLeader = 2
-    RTO = 3
-    Medic = 4
-    AutoRifleMan = 5
-    AssAutoRifleMan = 6
-    AntiTank = 7
-    AssAntiTank = 8
-    Grenadier = 9
-    Sapper = 10
-    AntiAir = 11
-    Marksman = 12
-    Rifleman = 13
-    VehicleCommander = 14
-    VehicleDriver = 15
-    VehicleGunner = 16
-    RotaryPilot = 17
-    RotaryCoPilot = 18
-    RotaryGunner = 19
-    FixedWingPilot = 20
-    FixedWingCoPilot = 21
-    MortairLeader = 22
-    Mortairman = 23
+    RTO= 3
+    FO_JTAC = 4
+    Medic = 5
+    Engineer = 6
+    CBRNSpecialist = 7
+    AutoRifleman = 8
+    AntiTank = 9
+    Grenadier = 10
+    Sapper = 11
+    AntiAir = 12
+    Marksman = 13
+    Sniper = 14
+    RiflemanAT = 15
+    Rifleman = 16
+    Gunner = 17
+    Assistant = 18
+    UAVOperator = 19
+    Commander = 20
+    Driver = 21
+    Pilot = 22
+    CoPilot = 23
+    IndirectFireSpecialist = 24
+    VIP = 25
 
 class Response(enum.Enum):
     Yes = 1
@@ -558,11 +560,16 @@ async def armabot(interaction: Interaction):
         color = Colour.dark_orange()
     )        
     myembed2.add_field(name="",value="Setup the Guild ID as an environment variable, so it can be used on other servers", inline=False)
-    myembed2.add_field(name="",value="I need to fix the permissions for the commands", inline=False)
+    myembed2.add_field(name="",value="Remove the 'No' rsvp, it really doesn't add anything and makes things more complicated.", inline=False)
     myembed2.add_field(name="",value="There is no error handling if you fill in something that doesn't exist (e.g. missions, sides, divisions)", inline=False)
-    myembed2.add_field(name="",value="The respond command does not check whether the roles chosen are actually in the mission.", inline=False)
-    myembed2.add_field(name="",value="The mission is posted immediately after doing /missioncreate. I should add a /missionpost or something to only post when the mission is completely filled in, to prevent confusion", inline=False)
+    myembed2.add_field(name="",value="Specifically look at no response responses.", inline=False)
     myembed2.add_field(name="",value="You can not yet delete sides, divisions, subdivisions or roles.", inline=False)
+    myembed2.add_field(name="",value="Don't accept duplicate divisions and subdivisions", inline=False)
+    myembed2.add_field(name="",value="If a role is added to a division or subdivision that doesn't exist, make it.", inline=False)
+    myembed2.add_field(name="",value="The respond command does not check whether the roles chosen are actually in the mission.", inline=False)
+    myembed2.add_field(name="",value="Add an optional Description parameter for mission create.", inline=False)
+    myembed2.add_field(name="",value="Add an optional OP ID for respond.", inline=False)
+    myembed2.add_field(name="",value="The mission is posted immediately after doing /missioncreate. I should add a /missionpost or something to only post when the mission is completely filled in, to prevent confusion", inline=False)
     myembed2.add_field(name="",value="There's only a reminder at the OP time, not 30 minutes in advance", inline=False)
     myembed2.add_field(name="",value="There is no @group which pings all of the group.", inline=False)
     myembed2.add_field(name="",value="It doesn't work correctly if there are multiple future missions", inline=False)

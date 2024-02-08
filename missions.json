@@ -148,5 +148,198 @@
         "sides": [],
         "channel": 945787764350259200,
         "id": 2
+    },
+    {
+        "py/object": "__main__.Mission",
+        "campaign": "Sinoviet",
+        "modset": "Sinoviet",
+        "op": "For Keeps",
+        "date": {
+            "py/object": "datetime.datetime",
+            "__reduce__": [
+                {
+                    "py/type": "datetime.datetime"
+                },
+                [
+                    "B+gCCBQAAAAAAA=="
+                ]
+            ]
+        },
+        "description": "Chinese troops have received reinforcements, and with that it seems, new orders. They are preparing a large assault across the river north-west of Hanoi. China is under a lot of pressure from the soviet union and the eyes of the world are upon them. If we can thwart the Chinese attack and deny them the city they will most likely have to risk all out war within the eastern block or cut their losses. Let us hope it will be the latter.",
+        "sides": [
+            {
+                "py/object": "__main__.Side",
+                "side": {
+                    "py/id": 5
+                },
+                "divisions": [
+                    {
+                        "py/object": "__main__.Division",
+                        "name": "Phuc",
+                        "subdivisions": [
+                            {
+                                "py/object": "__main__.Subdivision",
+                                "name": "Core",
+                                "roles": [
+                                    {
+                                        "py/id": 11
+                                    },
+                                    {
+                                        "py/reduce": [
+                                            {
+                                                "py/type": "__main__.Roles"
+                                            },
+                                            {
+                                                "py/tuple": [
+                                                    3
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "py/reduce": [
+                                            {
+                                                "py/type": "__main__.Roles"
+                                            },
+                                            {
+                                                "py/tuple": [
+                                                    12
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "py/object": "__main__.Subdivision",
+                                "name": "RED team",
+                                "roles": [
+                                    {
+                                        "py/reduce": [
+                                            {
+                                                "py/type": "__main__.Roles"
+                                            },
+                                            {
+                                                "py/tuple": [
+                                                    2
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "py/reduce": [
+                                            {
+                                                "py/type": "__main__.Roles"
+                                            },
+                                            {
+                                                "py/tuple": [
+                                                    4
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "py/id": 12
+                                    },
+                                    {
+                                        "py/id": 22
+                                    },
+                                    {
+                                        "py/reduce": [
+                                            {
+                                                "py/type": "__main__.Roles"
+                                            },
+                                            {
+                                                "py/tuple": [
+                                                    13
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "py/object": "__main__.Subdivision",
+                                "name": "BLUE team",
+                                "roles": []
+                            },
+                            {
+                                "py/object": "__main__.Subdivision",
+                                "name": "BLUE team",
+                                "roles": [
+                                    {
+                                        "py/id": 39
+                                    },
+                                    {
+                                        "py/id": 40
+                                    },
+                                    {
+                                        "py/id": 12
+                                    },
+                                    {
+                                        "py/id": 22
+                                    },
+                                    {
+                                        "py/id": 41
+                                    }
+                                ]
+                            },
+                            {
+                                "py/object": "__main__.Subdivision",
+                                "name": "BLUE",
+                                "roles": []
+                            }
+                        ]
+                    },
+                    {
+                        "py/object": "__main__.Division",
+                        "name": "Nuc (MiG-19)",
+                        "subdivisions": [
+                            {
+                                "py/object": "__main__.Subdivision",
+                                "name": "MiG-19",
+                                "roles": [
+                                    {
+                                        "py/reduce": [
+                                            {
+                                                "py/type": "__main__.Roles"
+                                            },
+                                            {
+                                                "py/tuple": [
+                                                    20
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "channel": 945787764350259200,
+        "id": 3
+    },
+    {
+        "py/object": "__main__.Mission",
+        "campaign": "Sinoviet",
+        "modset": "Sinoviet",
+        "op": "For Keeps 2",
+        "date": {
+            "py/object": "datetime.datetime",
+            "__reduce__": [
+                {
+                    "py/type": "datetime.datetime"
+                },
+                [
+                    "B+gCCRQAAAAAAA=="
+                ]
+            ]
+        },
+        "description": "",
+        "sides": [],
+        "channel": 945787764350259200,
+        "id": 4
     }
 ]

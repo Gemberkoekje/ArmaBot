@@ -65,5 +65,33 @@
             }
         ],
         "membername": "gemberkoekje"
+    },
+    {
+        "py/object": "__main__.Player",
+        "memberid": 288278943629312001,
+        "replies": [
+            {
+                "py/object": "__main__.Reply",
+                "missionid": 3,
+                "response": {
+                    "py/tuple": [
+                        {
+                            "py/id": 4
+                        }
+                    ]
+                },
+                "side": {
+                    "py/tuple": [
+                        {
+                            "py/id": 5
+                        }
+                    ]
+                },
+                "primaryPickId": 1,
+                "secondaryPickId": null,
+                "tertiaryPickId": null
+            }
+        ],
+        "membername": "cunamo."
     }
 ]

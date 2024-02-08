@@ -16,5 +16,17 @@
         "channelid": 945787764350259200,
         "messageid": 1204855859713282138,
         "missionid": 2
+    },
+    {
+        "py/object": "__main__.TrackedMessage",
+        "channelid": 945787764350259200,
+        "messageid": 1205110243064025139,
+        "missionid": 3
+    },
+    {
+        "py/object": "__main__.TrackedMessage",
+        "channelid": 945787764350259200,
+        "messageid": 1205118173372747808,
+        "missionid": 4
     }
 ]
