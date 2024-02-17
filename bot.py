@@ -6,10 +6,10 @@ import os
 import time
 import typing
 import jsonpickle
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import discord
-from discord import Client, Colour, Interaction, TextChannel, app_commands
+from discord import Client, Colour, Interaction, TextChannel, User, app_commands
 from dotenv import load_dotenv
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
@@ -20,11 +20,16 @@ async def print_reminder(mission, client, channel):
     print("reminding...")
     await client.wait_until_ready()
     channel = client.get_channel(channel)
-    await channel.send("mission "+mission.op+" is about to start!")
+    myembed=discord.Embed(
+        title= "mission "+ mission.op + " will start in 30 minutes!",
+        color = Colour.dark_orange()
+    )        
+    await channel.send(embed=myembed)
     
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
+GUILDID = os.getenv('GUILD_ID')
 
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
@@ -67,19 +72,18 @@ class Roles(enum.Enum):
 class Response(enum.Enum):
     Yes = 1
     Maybe = 2
-    No = 3
 
 class Subdivision:
     name:str
-    roles: []
+    roles: typing.List[Roles]
 
 class Division:
     name: str
-    subdivisions: []
+    subdivisions: typing.List[Subdivision]
 
 class Side:
     side: Sides
-    divisions: []
+    divisions: typing.List[Division]
 
 class Mission:
     def toJSON(self):
@@ -92,7 +96,8 @@ class Mission:
     date: datetime
     description: str
     channel: int
-    sides: []
+    usertoping: int
+    sides: typing.List[Side]
     
 
 class Reply:
@@ -107,7 +112,7 @@ class Reply:
 class Player:
     memberid: int
     membername: str
-    replies: []
+    replies: typing.List[Reply]
     
 class TrackedMessage:
     messageid: int
@@ -138,56 +143,53 @@ def load_trackedmessages():
         json_str = openfile.read()
         return jsonpickle.decode(json_str)
     
-async def update_trackedmessages(client : Client):
+async def update_trackedmessages(client : Client, mymission : Mission):
     trackedmessages = load_trackedmessages()
     missions = load_missions()
     players = load_players()
     for trackedmessage in trackedmessages:
-        for mission in missions:
-            if trackedmessage.missionid == mission.id:
-                mymission = mission
-                print("Mission found")
-        channel = await client.fetch_channel(trackedmessage.channelid)
-        message = await channel.fetch_message(trackedmessage.messageid)
-        myembed=discord.Embed(
-            title= "mission "+ mission.op,
-            color = Colour.dark_orange()
-        )        
-        myembed.add_field(name="Campaign",value=mymission.campaign,inline=False)
-        myembed.add_field(name="Modset",value=mymission.modset,inline=False)
-        myembed.add_field(name="Op",value=mymission.op,inline=False)
-        myembed.add_field(name="Date",value=str(mymission.date) + "(<t:"+str(int(time.mktime(mymission.date.timetuple())))+":R>)",inline=False)
-        myembed.add_field(name="Description",value=mymission.description,inline=False)
-        myembed2=discord.Embed(
-            title= "Composition",
-            color = Colour.dark_orange()
-        )
-        tekst = "```"        
-        for side in mymission.sides:
-            for division in side.divisions:
-                tekst = tekst + "" + division.name + ":\n"
-                for subdivision in division.subdivisions:
-                    tekst = tekst + "    " + subdivision.name + ":\n"
-                    for role in subdivision.roles:
-                        tekst = tekst + "        " + str(role.name) + "\n"
-            tekst = tekst + "```"        
-            myembed2.add_field(name=str(side.side.name),value=tekst)
-            
-        myembed3=discord.Embed(
-            title= "RSVPs",
-            color = Colour.dark_orange()
-        )
-        rsvps = 0
-        rsvpmaybe = 0
-        for player in players:
-            myreply : Reply = None
-            for reply in player.replies:
-                if reply.missionid == mymission.id:
-                    myreply = reply
-            if myreply is not None:
-                if myreply.response == Response.Maybe:
-                    rsvpmaybe = rsvpmaybe + 1
-                if myreply.response != Response.No:
+        if trackedmessage.missionid == mymission.id:
+            print("Mission found for update")
+            channel = await client.fetch_channel(trackedmessage.channelid)
+            message = await channel.fetch_message(trackedmessage.messageid)
+            myembed=discord.Embed(
+                title= "mission "+ mission.op,
+                color = Colour.dark_orange()
+            )        
+            myembed.add_field(name="Campaign",value=mymission.campaign,inline=False)
+            myembed.add_field(name="Modset",value=mymission.modset,inline=False)
+            myembed.add_field(name="Op",value=mymission.op,inline=False)
+            myembed.add_field(name="Date",value="<t:"+str(int(time.mktime(mymission.date.timetuple())))+"> " + "(<t:"+str(int(time.mktime(mymission.date.timetuple())))+":R>)",inline=False)
+            myembed.add_field(name="Description",value=mymission.description,inline=False)
+            myembed2=discord.Embed(
+                title= "Composition",
+                color = Colour.dark_orange()
+            )
+            for side in mymission.sides:
+                tekst = "```"        
+                for division in side.divisions:
+                    tekst = tekst + "" + division.name + ":\n"
+                    for subdivision in division.subdivisions:
+                        tekst = tekst + "    " + subdivision.name + ":\n"
+                        for role in subdivision.roles:
+                            tekst = tekst + "        " + str(role.name) + "\n"
+                tekst = tekst + "```"        
+                myembed2.add_field(name=str(side.side.name),value=tekst)
+
+            myembed3=discord.Embed(
+                title= "RSVPs",
+                color = Colour.dark_orange()
+            )
+            rsvps = 0
+            rsvpmaybe = 0
+            for player in players:
+                myreply : Reply = None
+                for reply in player.replies:
+                    if reply.missionid == mymission.id:
+                        myreply = reply
+                if myreply is not None:
+                    if myreply.response == Response.Maybe:
+                        rsvpmaybe = rsvpmaybe + 1
                     myvalue = ""
                     if myreply.primaryPickId is not None:
                         myvalue = myvalue + Roles(myreply.primaryPickId).name + " "
@@ -197,22 +199,22 @@ async def update_trackedmessages(client : Client):
                         myvalue = myvalue + Roles(myreply.tertiaryPickId).name + " "
                     myembed3.add_field(name=player.membername,value=myvalue,inline=False)
                     rsvps=rsvps+1
-        myembed3.add_field(name="Total rsvps", value= str(rsvps),inline=False)
-        myembed3.add_field(name="Maybe rsvps", value= str(rsvpmaybe),inline=False)
-        myembed3.add_field(name="", value="Please use /respond to reply whether you want to join this mission!",inline=False)
-        embedList = []
-        embedList.append(myembed)
-        embedList.append(myembed2)
-        embedList.append(myembed3)
-        await message.edit( embeds= embedList )
+            myembed3.add_field(name="Total rsvps", value= str(rsvps),inline=False)
+            myembed3.add_field(name="Maybe rsvps", value= str(rsvpmaybe),inline=False)
+            myembed3.add_field(name="", value="Please use /respond to reply whether you want to join this mission!",inline=False)
+            embedList = []
+            embedList.append(myembed)
+            embedList.append(myembed2)
+            embedList.append(myembed3)
+            await message.edit(content="<@" + str(mymission.usertoping) + "> ", embeds= embedList )
         
 missions = []
 missions = load_missions()
 
 for mission in missions:
-    scheduler.add_job(print_reminder, 'date', run_date=mission.date, args=[mission, client, mission.channel])
+    scheduler.add_job(print_reminder, 'date', run_date=mission.date - timedelta(minutes=30), args=[mission, client, mission.channel])
 
-def save_missions(missions: []):
+def save_missions(missions: typing.List[Mission]):
      
     # Serializing json
     json_object = jsonpickle.encode(missions, indent=4)
@@ -221,7 +223,7 @@ def save_missions(missions: []):
     with open("missions.json", "w") as outfile:
         outfile.write(json_object)
 
-def save_players(players: []):
+def save_players(players: typing.List[Player]):
      
     # Serializing json
     json_object = jsonpickle.encode(players, indent=4)
@@ -230,7 +232,7 @@ def save_players(players: []):
     with open("players.json", "w") as outfile:
         outfile.write(json_object)
 
-def save_trackedmessages(trackedmessages: []):
+def save_trackedmessages(trackedmessages: typing.List[TrackedMessage]):
      
     # Serializing json
     json_object = jsonpickle.encode(trackedmessages, indent=4)
@@ -242,55 +244,84 @@ def save_trackedmessages(trackedmessages: []):
 @tree.command(
     name="missioncreate",
     description="Create a new mission",
-    guild=discord.Object(id=239086791661977601)
+    guild=discord.Object(id=GUILDID)
 )
 @app_commands.default_permissions(manage_channels=True)
-async def missioncreate(interaction: Interaction, campaign: str, modset: str, op: str, date: str, channel: TextChannel):
+async def missioncreate(interaction: Interaction, campaign: str, modset: str, op: str, date: str, channel: TextChannel, usertoping: User, description: typing.Optional[str]):
     missions = load_missions()
     newmission = Mission()
     newmission.campaign = campaign
     newmission.modset = modset
     newmission.op = op
+    newmission.usertoping = usertoping.id
     try:
         newmission.date = datetime.strptime(date, '%Y-%m-%d %H:%M')
     except:
-        await interaction.response.send_message("Invalid date format. Please supply in YYYY-MM-DD HH:MM e.g. 2024-01-01 12:00")
+        await interaction.response.send_message("Invalid date format. Please supply in YYYY-MM-DD HH:MM e.g. 2024-01-01 12:00", ephemeral= True )
     else:
-        newmission.description = ""
+        if description != None:
+            newmission.description = description
+        else:
+            newmission.description = ""
         newmission.sides = []
         newmission.channel = channel.id
         newmission.id = len(missions)
         missions.append(newmission)
         save_missions(missions)
-        scheduler.add_job(print_reminder, 'date', run_date=newmission.date, args=[newmission, client, channel.id])
-        await interaction.response.send_message("mission created with ID " + str(newmission.id), ephemeral= True)
-        trackedmessages = load_trackedmessages()
-        myembed=discord.Embed(
-            title= "mission "+ op,
-            color = Colour.dark_orange()
-        )        
-        newmessage = await channel.send(embed=myembed)
-        newtrackedmessage = TrackedMessage()
-        newtrackedmessage.channelid = channel.id
-        newtrackedmessage.messageid = newmessage.id
-        newtrackedmessage.missionid = newmission.id
-        trackedmessages.append(newtrackedmessage)
-        save_trackedmessages(trackedmessages)
-        await update_trackedmessages(interaction.client)
+        await interaction.response.send_message("mission created with id " + str(newmission.id), ephemeral= True)
+
+@tree.command(
+    name="missionpost",
+    description="Post a created mission",
+    guild=discord.Object(id=GUILDID)
+)
+@app_commands.default_permissions(manage_channels=True)
+async def missionpost(interaction: Interaction, missionid: int):
+    missions = load_missions()
+    mymission = None
+    for mission in missions:
+        if missionid == mission.id:
+            mymission = mission
+            print("Mission found for post")
+            break
+    if mymission == None:
+        await interaction.response.send_message("Mission " + str(missionid) + " not found", ephemeral= True)
+        return
+    channel = await client.fetch_channel(mymission.channel)
+    scheduler.add_job(print_reminder, 'date', run_date=mymission.date - timedelta(minutes=30), args=[mymission, client, channel.id])
+    await interaction.response.send_message("mission post created for " + str(mymission.id), ephemeral= True)
+    trackedmessages = load_trackedmessages()
+    myembed=discord.Embed(
+        title= "mission "+ mymission.op,
+        color = Colour.dark_orange()
+    )        
+    newmessage = await channel.send(content="<@" + str(mymission.usertoping) + "> ", embed=myembed)
+    newtrackedmessage = TrackedMessage()
+    newtrackedmessage.channelid = channel.id
+    newtrackedmessage.messageid = newmessage.id
+    newtrackedmessage.missionid = mymission.id
+    trackedmessages.append(newtrackedmessage)
+    save_trackedmessages(trackedmessages)
+    await update_trackedmessages(interaction.client, mymission)
+
     
 @tree.command(
     name="missionaddside",
     description="Add a side to a mission",
-    guild=discord.Object(id=239086791661977601)
+    guild=discord.Object(id=GUILDID)
 )
 @app_commands.default_permissions(manage_channels=True)
 async def missionaddside(interaction: Interaction, missionid: int, side: Sides):
     missions = load_missions()
-    mymission = Mission()
+    mymission = None
     for mission in missions:
         if missionid == mission.id:
             mymission = mission
-            print("Mission found")
+            print("Mission found for addside")
+            break
+    if mymission == None:
+        await interaction.response.send_message("Mission " + str(missionid) + " not found", ephemeral= True)
+        return
     shouldadd = True
     for queryside in mymission.sides:
         if queryside.side is side:
@@ -301,116 +332,329 @@ async def missionaddside(interaction: Interaction, missionid: int, side: Sides):
         newside.divisions = []
         mymission.sides.append(newside)
     save_missions(missions)
-    await update_trackedmessages(interaction.client)
-    
     await interaction.response.send_message("Side "+str(side.name)+" added to " + str(mymission.id), ephemeral= True)
+    await update_trackedmessages(interaction.client, mymission)
     
+    
+@tree.command(
+    name="missiondeleteside",
+    description="Delete a side to a mission",
+    guild=discord.Object(id=GUILDID)
+)
+@app_commands.default_permissions(manage_channels=True)
+async def missiondeleteside(interaction: Interaction, missionid: int, side: Sides):
+    missions = load_missions()
+    mymission = None
+    for mission in missions:
+        if missionid == mission.id:
+            mymission = mission
+            print("Mission found")
+    if mymission == None:
+        await interaction.response.send_message("Mission " + str(missionid) + " not found", ephemeral= True)
+        return
+    myside = None
+    for queryside in mymission.sides:
+        if queryside.side is side:
+            myside = queryside
+            print("side found")
+    if myside == None:
+        await interaction.response.send_message("Side " + str(side) + " not found", ephemeral= True)
+        return
+    mymission.sides.remove(myside)
+    save_missions(missions)
+    await interaction.response.send_message("Side "+str(side.name)+" deleted from " + str(mymission.id), ephemeral= True)
+    await update_trackedmessages(interaction.client, mymission)
+    
+
 @tree.command(
     name="missionadddescription",
     description="Add a description to a mission",
-    guild=discord.Object(id=239086791661977601)
+    guild=discord.Object(id=GUILDID)
 )
 @app_commands.default_permissions(manage_channels=True)
 async def missionadddescription(interaction: Interaction, missionid: int, description: str):
     missions = load_missions()
-    mymission = Mission()
+    mymission = None
     for mission in missions:
         if missionid == mission.id:
             mymission = mission
             print("Mission found")
+    if mymission == None:
+        await interaction.response.send_message("Mission " + str(missionid) + " not found", ephemeral= True)
+        return
     mymission.description = description
     save_missions(missions)
-    await update_trackedmessages(interaction.client)
-    
     await interaction.response.send_message("Description added to " + str(mymission.id), ephemeral= True)
+    await update_trackedmessages(interaction.client, mymission)
+    
     
 @tree.command(
     name="missionadddivision",
     description="Add a division to a mission",
-    guild=discord.Object(id=239086791661977601)
+    guild=discord.Object(id=GUILDID)
 )
 @app_commands.default_permissions(manage_channels=True)
 async def missionadddivision(interaction: Interaction, missionid: int, side: Sides, division: str):
     missions = load_missions()
-    mymission = Mission()
+    mymission = None
     for mission in missions:
         if missionid == mission.id:
             mymission = mission
             print("Mission found")
+    if mymission == None:
+        await interaction.response.send_message("Mission " + str(missionid) + " not found", ephemeral= True)
+        return
+    myside = None
     for queryside in mymission.sides:
         if queryside.side is side:
             myside = queryside
+            print("side found")
+    if myside == None:
+        await interaction.response.send_message("Side " + str(side) + " not found", ephemeral= True)
+        return
+    mydivision = None
+    for querydivision in myside.divisions:
+        if querydivision.name == division:
+            mydivision = querydivision
+    if mydivision != None:
+        await interaction.response.send_message("Division " + division + " already exists", ephemeral= True)
+        return
     newdivision = Division()
     newdivision.name = division
     newdivision.subdivisions = []
     myside.divisions.append(newdivision)
     save_missions(missions)
-    await update_trackedmessages(interaction.client)
-    
     await interaction.response.send_message("Division "+division+" added to " + str(mymission.id), ephemeral= True)
+    await update_trackedmessages(interaction.client, mymission)
+    
     
 @tree.command(
-    name="missionaddsubdivision",
-    description="Add a division to a mission",
-    guild=discord.Object(id=239086791661977601)
+    name="missiondeletedivision",
+    description="Delete a division from a mission",
+    guild=discord.Object(id=GUILDID)
 )
 @app_commands.default_permissions(manage_channels=True)
-async def missionaddsubdivision(interaction: Interaction, missionid: int, side: Sides, division: str, subdivision: str):
+async def missiondeletedivision(interaction: Interaction, missionid: int, side: Sides, division: str):
     missions = load_missions()
-    mymission = Mission()
+    mymission = None
     for mission in missions:
         if missionid == mission.id:
             mymission = mission
             print("Mission found")
+    if mymission == None:
+        await interaction.response.send_message("Mission " + str(missionid) + " not found", ephemeral= True)
+        return
+    myside = None
     for queryside in mymission.sides:
         if queryside.side is side:
             myside = queryside
             print("side found")
+    if myside == None:
+        await interaction.response.send_message("Side " + str(side) + " not found", ephemeral= True)
+        return
+    mydivision = None
     for querydivision in myside.divisions:
         if querydivision.name == division:
             mydivision = querydivision
+    if mydivision == None:
+        await interaction.response.send_message("Division " + division + " not found", ephemeral= True)
+        return
+    myside.divisions.remove(mydivision)
+    save_missions(missions)
+    await interaction.response.send_message("Division "+division+" deleted from " + str(mymission.id), ephemeral= True)
+    await update_trackedmessages(interaction.client, mymission)
+    
+    
+@tree.command(
+    name="missionaddsubdivision",
+    description="Add a division to a mission",
+    guild=discord.Object(id=GUILDID)
+)
+@app_commands.default_permissions(manage_channels=True)
+async def missionaddsubdivision(interaction: Interaction, missionid: int, side: Sides, division: str, subdivision: str):
+    missions = load_missions()
+    mymission = None
+    for mission in missions:
+        if missionid == mission.id:
+            mymission = mission
+            print("Mission found")
+    if mymission == None:
+        await interaction.response.send_message("Mission " + str(missionid) + " not found", ephemeral= True)
+        return
+    myside = None
+    for queryside in mymission.sides:
+        if queryside.side is side:
+            myside = queryside
+            print("side found")
+    if myside == None:
+        await interaction.response.send_message("Side " + str(side) + " not found", ephemeral= True)
+        return
+    mydivision = None
+    for querydivision in myside.divisions:
+        if querydivision.name == division:
+            mydivision = querydivision
+    if mydivision == None:
+        await interaction.response.send_message("Division " + division + " not found", ephemeral= True)
+        return
+    mysubdivision = None
+    for querysubdivision in mydivision.subdivisions:
+        if querysubdivision.name == subdivision:
+            mysubdivision = querysubdivision
+    if mysubdivision != None:
+        await interaction.response.send_message("SubDivision " + subdivision + " already exists", ephemeral= True)
+        return
     newsubdivision = Subdivision()
     newsubdivision.name = subdivision
     newsubdivision.roles = []
     mydivision.subdivisions.append(newsubdivision)
     save_missions(missions)
-    await update_trackedmessages(interaction.client)
-    
     await interaction.response.send_message("Subdivision "+subdivision+" added to " + str(mymission.id), ephemeral= True)
+    await update_trackedmessages(interaction.client, mymission)
     
+
 @tree.command(
-    name="missionaddrole",
-    description="Add a role to a mission",
-    guild=discord.Object(id=239086791661977601)
+    name="missiondeletesubdivision",
+    description="Delete a division to a mission",
+    guild=discord.Object(id=GUILDID)
 )
 @app_commands.default_permissions(manage_channels=True)
-async def missionaddrole(interaction: Interaction, missionid: int, side: Sides, division: str, subdivision: str, role: Roles):
+async def missiondeletesubdivision(interaction: Interaction, missionid: int, side: Sides, division: str, subdivision: str):
     missions = load_missions()
-    mymission = Mission()
+    mymission = None
     for mission in missions:
         if missionid == mission.id:
             mymission = mission
             print("Mission found")
+    if mymission == None:
+        await interaction.response.send_message("Mission " + str(missionid) + " not found", ephemeral= True)
+        return
+    myside = None
     for queryside in mymission.sides:
         if queryside.side is side:
             myside = queryside
             print("side found")
+    if myside == None:
+        await interaction.response.send_message("Side " + str(side) + " not found", ephemeral= True)
+        return
+    mydivision = None
     for querydivision in myside.divisions:
         if querydivision.name == division:
             mydivision = querydivision
+    if mydivision == None:
+        await interaction.response.send_message("Division " + division + " not found", ephemeral= True)
+        return
+    mysubdivision = None
     for querysubdivision in mydivision.subdivisions:
         if querysubdivision.name == subdivision:
             mysubdivision = querysubdivision
+    if mysubdivision == None:
+        await interaction.response.send_message("SubDivision " + subdivision + " not found", ephemeral= True)
+        return
+    mydivision.subdivisions.remove(mysubdivision)
+    save_missions(missions)
+    await interaction.response.send_message("Subdivision "+subdivision+" deleted from " + str(mymission.id), ephemeral= True)
+    await update_trackedmessages(interaction.client, mymission)
+    
+
+    
+@tree.command(
+    name="missionaddrole",
+    description="Add a role to a mission",
+    guild=discord.Object(id=GUILDID)
+)
+@app_commands.default_permissions(manage_channels=True)
+async def missionaddrole(interaction: Interaction, missionid: int, side: Sides, division: str, subdivision: str, role: Roles):
+    missions = load_missions()
+    mymission = None
+    for mission in missions:
+        if missionid == mission.id:
+            mymission = mission
+            print("Mission found")
+    if mymission == None:
+        await interaction.response.send_message("Mission " + str(missionid) + " not found", ephemeral= True)
+        return
+    myside = None
+    for queryside in mymission.sides:
+        if queryside.side is side:
+            myside = queryside
+            print("side found")
+    if myside == None:
+        myside = Side()
+        myside.side = side
+        myside.divisions = []
+        mymission.sides.append(myside)
+    mydivision = None
+    for querydivision in myside.divisions:
+        if querydivision.name == division:
+            mydivision = querydivision
+    if mydivision == None:
+        mydivision = Division()
+        mydivision.name = division
+        mydivision.subdivisions = []
+        myside.divisions.append(mydivision)
+    mysubdivision = None
+    for querysubdivision in mydivision.subdivisions:
+        if querysubdivision.name == subdivision:
+            mysubdivision = querysubdivision
+    if mysubdivision == None:
+        mysubdivision = Subdivision()
+        mysubdivision.name = subdivision
+        mysubdivision.roles = []
+        mydivision.subdivisions.append(mysubdivision)
     mysubdivision.roles.append(role)
     save_missions(missions)
-    await update_trackedmessages(interaction.client)
-    
     await interaction.response.send_message("Role "+str(role.name)+" added to " + str(mymission.id), ephemeral= True)
+    await update_trackedmessages(interaction.client, mymission)
+    
+    
+@tree.command(
+    name="missiondeleterole",
+    description="Delete a role to a mission",
+    guild=discord.Object(id=GUILDID)
+)
+@app_commands.default_permissions(manage_channels=True)
+async def missiondeleterole(interaction: Interaction, missionid: int, side: Sides, division: str, subdivision: str, role: Roles):
+    missions = load_missions()
+    mymission = None
+    for mission in missions:
+        if missionid == mission.id:
+            mymission = mission
+            print("Mission found")
+    if mymission == None:
+        await interaction.response.send_message("Mission " + str(missionid) + " not found", ephemeral= True)
+        return
+    myside = None
+    for queryside in mymission.sides:
+        if queryside.side is side:
+            myside = queryside
+            print("side found")
+    if myside == None:
+        await interaction.response.send_message("Side " + str(side) + " not found", ephemeral= True)
+        return
+    mydivision = None
+    for querydivision in myside.divisions:
+        if querydivision.name == division:
+            mydivision = querydivision
+    if mydivision == None:
+        await interaction.response.send_message("Division " + division + " not found", ephemeral= True)
+        return
+    mysubdivision = None
+    for querysubdivision in mydivision.subdivisions:
+        if querysubdivision.name == subdivision:
+            mysubdivision = querysubdivision
+    if mysubdivision == None:
+        await interaction.response.send_message("SubDivision " + subdivision + " not found", ephemeral= True)
+        return
+    mysubdivision.roles.remove(role)
+    save_missions(missions)
+    await interaction.response.send_message("Role "+str(role.name)+" deleted from " + str(mymission.id), ephemeral= True)
+    await update_trackedmessages(interaction.client, mymission)
+    
     
 @tree.command(
     name="missionshow",
     description="Show a mission",
-    guild=discord.Object(id=239086791661977601)
+    guild=discord.Object(id=GUILDID)
 )
 @app_commands.default_permissions(manage_channels=True)
 async def missionshow(interaction: Interaction, missionid: int):
@@ -427,12 +671,13 @@ async def missionshow(interaction: Interaction, missionid: int):
     myembed.add_field(name="Modset",value=mymission.modset,inline=False)
     myembed.add_field(name="Op",value=mymission.op,inline=False)
     myembed.add_field(name="Date",value=str(mymission.date) + "(<t:"+str(int(time.mktime(mymission.date.timetuple())))+":R>)",inline=False)
+    myembed.add_field(name="Description",value=mymission.description,inline=False)
     myembed2=discord.Embed(
         title= "Composition",
         color = Colour.dark_orange()
     )
-    tekst = "```"        
     for side in mymission.sides:
+        tekst = "```"        
         for division in side.divisions:
             tekst = tekst + "" + division.name + ":\n"
             for subdivision in division.subdivisions:
@@ -449,7 +694,7 @@ async def missionshow(interaction: Interaction, missionid: int):
 @tree.command(
     name="missionlist",
     description="Show all missions",
-    guild=discord.Object(id=239086791661977601)
+    guild=discord.Object(id=GUILDID)
 )
 @app_commands.default_permissions(manage_channels=True)
 async def missionlist(interaction):
@@ -465,9 +710,9 @@ async def missionlist(interaction):
 @tree.command(
     name="respond",
     description="Respond to the most recent op",
-    guild=discord.Object(id=239086791661977601)
+    guild=discord.Object(id=GUILDID)
 )
-async def respond(interaction: Interaction, rsvp: Response, side: Sides, primaryrole:  typing.Optional[Roles], secondaryrole: typing.Optional[Roles], tertiaryrole: typing.Optional[Roles]):
+async def respond(interaction: Interaction, rsvp: Response, side: Sides, primaryrole:  Roles, secondaryrole: typing.Optional[Roles], tertiaryrole: typing.Optional[Roles], missionid: typing.Optional[int]):
     players = load_players()
     myplayer = None
     for player in players:
@@ -483,15 +728,44 @@ async def respond(interaction: Interaction, rsvp: Response, side: Sides, primary
     missions = load_missions()
     mymission = None
     for mission in missions:
-        if(mission.date > datetime.now()):
+        if(mission.date > datetime.now()) or mission.id == missionid:
             mymission = mission
     if mymission is None:
         myembed=discord.Embed(
             title= "No ops currently active",
             color = Colour.dark_orange()
         )        
-        await interaction.response.send_message( embed= myembed )
+        await interaction.response.send_message( embed= myembed, ephemeral= True  )
         return
+    primaryroleisinmission = False
+    secondaryroleisinmission = secondaryrole == None
+    tertiaryroleisinmission = tertiaryrole == None
+    for forside in mymission.sides:
+        for division in forside.divisions:
+            for subdivision in division.subdivisions:
+                for role in subdivision.roles:
+                    if primaryrole == role:
+                        primaryroleisinmission = True
+                    if secondaryrole == role:
+                        secondaryroleisinmission = True
+                    if tertiaryrole == role:
+                        tertiaryroleisinmission = True
+    if not primaryroleisinmission or not secondaryroleisinmission or not tertiaryroleisinmission:
+        title = ""
+        if not primaryroleisinmission:
+            title = title + str(primaryrole) + " "
+        if not secondaryroleisinmission:
+            title = title + str(secondaryrole) + " "
+        if not tertiaryroleisinmission:
+            title = title + str(tertiaryrole) + " "
+        title = title + "is not available for this mission."
+        myembed=discord.Embed(
+            title= title,
+            color = Colour.dark_orange()
+        )        
+        await interaction.response.send_message( embed= myembed, ephemeral= True  )
+        return
+        
     myreply = None
     for reply in myplayer.replies:
         if reply.missionid == mymission.id:
@@ -519,7 +793,7 @@ async def respond(interaction: Interaction, rsvp: Response, side: Sides, primary
     
     save_players(players)
     
-    await update_trackedmessages(interaction.client)
+    await update_trackedmessages(interaction.client, mymission)
     
     myembed=discord.Embed(
         title= "You have replied!",
@@ -539,7 +813,7 @@ async def respond(interaction: Interaction, rsvp: Response, side: Sides, primary
 @tree.command(
     name="armabot",
     description="Get info about arma bot",
-    guild=discord.Object(id=239086791661977601)
+    guild=discord.Object(id=GUILDID)
 )
 async def armabot(interaction: Interaction):
     myembed=discord.Embed(
@@ -547,11 +821,16 @@ async def armabot(interaction: Interaction):
         color = Colour.dark_orange()
     )        
     myembed.add_field(name="/missioncreate",value="Creates a new mission", inline=False)
+    myembed.add_field(name="/missionpost",value="Creates the mission post", inline=False)
     myembed.add_field(name="/missionadddescription",value="Adds a description to a created mission", inline=False)
     myembed.add_field(name="/missionaddside",value="Adds a side (e.g. Blufor) to a created mission", inline=False)
+    myembed.add_field(name="/missiondeleteside",value="Deletes a side (e.g. Blufor) from a created mission", inline=False)
     myembed.add_field(name="/missionadddivision",value="Adds a division to a side for a created mission", inline=False)
+    myembed.add_field(name="/missiondeletedivision",value="Deletes a division to a side from a created mission", inline=False)
     myembed.add_field(name="/missionaddsubdivision",value="Adds a subdivision to a division for a created mission", inline=False)
+    myembed.add_field(name="/missiondeletesubdivision",value="Deletes a subdivision to a division from a created mission", inline=False)
     myembed.add_field(name="/missionaddrole",value="Adds a role to a subdivision for a created mission", inline=False)
+    myembed.add_field(name="/missiondeleterole",value="Deletes a role to a subdivision from a created mission", inline=False)
     myembed.add_field(name="/missionshow",value="Show a mission. Be aware that this does not get automatically updated (yet)", inline=False)
     myembed.add_field(name="/missionlist",value="Get a list of all missions in the database", inline=False)
     myembed.add_field(name="/respond",value="Allows players to respond to the mission. This assumes there's only 1 mission in the future.", inline=False)
@@ -559,22 +838,10 @@ async def armabot(interaction: Interaction):
         title= "ARMA Bot To Do List",
         color = Colour.dark_orange()
     )        
-    myembed2.add_field(name="",value="Setup the Guild ID as an environment variable, so it can be used on other servers", inline=False)
-    myembed2.add_field(name="",value="Remove the 'No' rsvp, it really doesn't add anything and makes things more complicated.", inline=False)
-    myembed2.add_field(name="",value="There is no error handling if you fill in something that doesn't exist (e.g. missions, sides, divisions)", inline=False)
-    myembed2.add_field(name="",value="Specifically look at no response responses.", inline=False)
-    myembed2.add_field(name="",value="You can not yet delete sides, divisions, subdivisions or roles.", inline=False)
-    myembed2.add_field(name="",value="Don't accept duplicate divisions and subdivisions", inline=False)
-    myembed2.add_field(name="",value="If a role is added to a division or subdivision that doesn't exist, make it.", inline=False)
-    myembed2.add_field(name="",value="The respond command does not check whether the roles chosen are actually in the mission.", inline=False)
-    myembed2.add_field(name="",value="Add an optional Description parameter for mission create.", inline=False)
-    myembed2.add_field(name="",value="Add an optional OP ID for respond.", inline=False)
-    myembed2.add_field(name="",value="The mission is posted immediately after doing /missioncreate. I should add a /missionpost or something to only post when the mission is completely filled in, to prevent confusion", inline=False)
-    myembed2.add_field(name="",value="There's only a reminder at the OP time, not 30 minutes in advance", inline=False)
-    myembed2.add_field(name="",value="There is no @group which pings all of the group.", inline=False)
     myembed2.add_field(name="",value="It doesn't work correctly if there are multiple future missions", inline=False)
     myembed2.add_field(name="",value="Investigate the possibility of adding multiple roles in the same /missionaddrole command, so it becomes less tedious to set up", inline=False)
     myembed2.add_field(name="",value="I have an idea to add a suggested setup, based on primaries/secondaries/tertiaries", inline=False)
+    myembed2.add_field(name="",value="You should be able to edit mission names, op names etc.", inline=False)
     embedList = []
     embedList.append(myembed)
     embedList.append(myembed2)
@@ -583,7 +850,7 @@ async def armabot(interaction: Interaction):
 
 @client.event
 async def on_ready():
-    await tree.sync(guild=discord.Object(id=239086791661977601))
+    await tree.sync(guild=discord.Object(id=GUILDID))
     scheduler.start()
     print("Ready!")
 
