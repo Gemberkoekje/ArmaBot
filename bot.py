@@ -295,7 +295,7 @@ async def missionpost(interaction: Interaction, missionid: int):
         title= "mission "+ mymission.op,
         color = Colour.dark_orange()
     )        
-    newmessage = await channel.send(content="<@" + str(mymission.usertoping) + "> ", embed=myembed)
+    newmessage = await channel.send(content="<@&" + str(mymission.usertoping) + "> ", embed=myembed)
     newtrackedmessage = TrackedMessage()
     newtrackedmessage.channelid = channel.id
     newtrackedmessage.messageid = newmessage.id
@@ -842,6 +842,8 @@ async def armabot(interaction: Interaction):
     myembed2.add_field(name="",value="Investigate the possibility of adding multiple roles in the same /missionaddrole command, so it becomes less tedious to set up", inline=False)
     myembed2.add_field(name="",value="I have an idea to add a suggested setup, based on primaries/secondaries/tertiaries", inline=False)
     myembed2.add_field(name="",value="You should be able to edit mission names, op names etc.", inline=False)
+    myembed2.add_field(name="",value="Add custom names to roles so roles can be more defined", inline=False)
+    myembed2.add_field(name="",value="Allow to read in a role list (JSON) to fill an entire mission in one go.", inline=False)
     embedList = []
     embedList.append(myembed)
     embedList.append(myembed2)
