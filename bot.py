@@ -206,7 +206,7 @@ async def update_trackedmessages(client : Client, mymission : Mission):
                     rsvps=rsvps+1
             myembed3.add_field(name="Total rsvps", value= str(rsvps),inline=False)
             myembed3.add_field(name="Maybe rsvps", value= str(rsvpmaybe),inline=False)
-            myembed3.add_field(name="", value="Please use /respond to reply whether you want to join this mission!",inline=False)
+            myembed3.add_field(name="", value="Please use /respond to reply whether you want to join this mission!\nYou can use /respond multiple times to change your reply,\nor you can use /unrespond to remove your response if you can't come after all!",inline=False)
             embedList = []
             embedList.append(myembed)
             embedList.append(myembed2)
@@ -814,6 +814,57 @@ async def respond(interaction: Interaction, rsvp: Response, side: Sides, primary
     if tertiaryrole is not None:
         myembed.add_field(name="Tertiary pick",value=str(tertiaryrole.name), inline=False)
     await interaction.response.send_message( embed= myembed, ephemeral= True )
+
+@tree.command(
+    name="unrespond",
+    description="Unrespond to the most recent op",
+    guild=discord.Object(id=GUILDID)
+)
+async def unrespond(interaction: Interaction, missionid: typing.Optional[int]):
+    players = load_players()
+    myplayer = None
+    for player in players:
+        if interaction.user.id == player.memberid:
+            myplayer = player
+    if myplayer is None:
+        newplayer = Player()
+        newplayer.memberid = interaction.user.id
+        newplayer.replies = []
+        players.append(newplayer)
+        myplayer = newplayer
+    myplayer.membername = interaction.user.name
+    missions = load_missions()
+    mymission = None
+    for mission in missions:
+        if(mission.date > datetime.now()) or mission.id == missionid:
+            mymission = mission
+    if mymission is None:
+        myembed=discord.Embed(
+            title= "No ops currently active",
+            color = Colour.dark_orange()
+        )        
+        await interaction.response.send_message( embed= myembed, ephemeral= True  )
+        return
+        
+    myreply = None
+    for reply in myplayer.replies:
+        if reply.missionid == mymission.id:
+            myreply = reply
+    if myreply != None:
+        myplayer.replies.remove(myreply)
+        
+    save_players(players)
+    
+    await update_trackedmessages(interaction.client, mymission)
+    
+    myembed=discord.Embed(
+        title= "You have unreplied!",
+        color = Colour.dark_orange()
+    )        
+    myembed.add_field(name="Mission",value=mission.op, inline=False)
+    myembed.add_field(name="Response",value="Response.No", inline=False)
+    await interaction.response.send_message( embed= myembed, ephemeral= True )
+
     
 @tree.command(
     name="armabot",
@@ -839,6 +890,7 @@ async def armabot(interaction: Interaction):
     myembed.add_field(name="/missionshow",value="Show a mission. Be aware that this does not get automatically updated (yet)", inline=False)
     myembed.add_field(name="/missionlist",value="Get a list of all missions in the database", inline=False)
     myembed.add_field(name="/respond",value="Allows players to respond to the mission. This assumes there's only 1 mission in the future.", inline=False)
+    myembed.add_field(name="/unrespond",value="Allows players to cancel their response to the mission. This assumes there's only 1 mission in the future.", inline=False)
     myembed2=discord.Embed(
         title= "ARMA Bot To Do List",
         color = Colour.dark_orange()
