@@ -153,7 +153,7 @@ async def update_trackedmessages(client : Client, mymission : Mission):
             channel = await client.fetch_channel(trackedmessage.channelid)
             message = await channel.fetch_message(trackedmessage.messageid)
             myembed=discord.Embed(
-                title= "mission "+ mission.op,
+                title= "mission "+ mymission.op,
                 color = Colour.dark_orange()
             )        
             myembed.add_field(name="Campaign",value=mymission.campaign,inline=False)
