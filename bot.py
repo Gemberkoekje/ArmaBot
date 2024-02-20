@@ -9,7 +9,7 @@ import jsonpickle
 from datetime import datetime, timedelta
 
 import discord
-from discord import Client, Colour, Interaction, TextChannel, User, app_commands
+from discord import Client, Colour, Interaction, Role, TextChannel, User, app_commands
 from dotenv import load_dotenv
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
@@ -247,7 +247,7 @@ def save_trackedmessages(trackedmessages: typing.List[TrackedMessage]):
     guild=discord.Object(id=GUILDID)
 )
 @app_commands.default_permissions(manage_channels=True)
-async def missioncreate(interaction: Interaction, campaign: str, modset: str, op: str, date: str, channel: TextChannel, usertoping: User, description: typing.Optional[str]):
+async def missioncreate(interaction: Interaction, campaign: str, modset: str, op: str, date: str, channel: TextChannel, usertoping: Role, description: typing.Optional[str]):
     missions = load_missions()
     newmission = Mission()
     newmission.campaign = campaign
