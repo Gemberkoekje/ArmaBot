@@ -21,7 +21,7 @@ async def print_reminder(mission, client, channel):
     await client.wait_until_ready()
     channel = client.get_channel(channel)
     myembed=discord.Embed(
-        title= "mission "+ mission.op + " will start in 30 minutes!",
+        title= "<@&" + str(mission.usertoping) + "> mission "+ mission.op + " will start in 30 minutes!",
         color = Colour.dark_orange()
     )        
     await channel.send(embed=myembed)
@@ -206,7 +206,7 @@ async def update_trackedmessages(client : Client, mymission : Mission):
             embedList.append(myembed)
             embedList.append(myembed2)
             embedList.append(myembed3)
-            await message.edit(content="<@" + str(mymission.usertoping) + "> ", embeds= embedList )
+            await message.edit(content="<@&" + str(mymission.usertoping) + "> ", embeds= embedList )
         
 missions = []
 missions = load_missions()
