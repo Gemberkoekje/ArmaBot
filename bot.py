@@ -142,6 +142,10 @@ def load_trackedmessages():
         # Reading from json file
         json_str = openfile.read()
         return jsonpickle.decode(json_str)
+
+def get_name(player : Player):
+    return player.membername
+
     
 async def update_trackedmessages(client : Client, mymission : Mission):
     trackedmessages = load_trackedmessages()
@@ -182,6 +186,7 @@ async def update_trackedmessages(client : Client, mymission : Mission):
             )
             rsvps = 0
             rsvpmaybe = 0
+            players.sort(key = get_name)
             for player in players:
                 myreply : Reply = None
                 for reply in player.replies:
@@ -192,11 +197,11 @@ async def update_trackedmessages(client : Client, mymission : Mission):
                         rsvpmaybe = rsvpmaybe + 1
                     myvalue = ""
                     if myreply.primaryPickId is not None:
-                        myvalue = myvalue + Roles(myreply.primaryPickId).name + " "
+                        myvalue = myvalue + Roles(myreply.primaryPickId).name + " | "
                     if myreply.secondaryPickId is not None:
-                        myvalue = myvalue + Roles(myreply.secondaryPickId).name + " "
+                        myvalue = myvalue + Roles(myreply.secondaryPickId).name + " | "
                     if myreply.tertiaryPickId is not None:
-                        myvalue = myvalue + Roles(myreply.tertiaryPickId).name + " "
+                        myvalue = myvalue + Roles(myreply.tertiaryPickId).name + " | "
                     myembed3.add_field(name=player.membername,value=myvalue,inline=False)
                     rsvps=rsvps+1
             myembed3.add_field(name="Total rsvps", value= str(rsvps),inline=False)
@@ -838,6 +843,7 @@ async def armabot(interaction: Interaction):
         title= "ARMA Bot To Do List",
         color = Colour.dark_orange()
     )        
+    myembed2.add_field(name="",value="You should be able to cancel your response somehow", inline=False)
     myembed2.add_field(name="",value="It doesn't work correctly if there are multiple future missions", inline=False)
     myembed2.add_field(name="",value="Investigate the possibility of adding multiple roles in the same /missionaddrole command, so it becomes less tedious to set up", inline=False)
     myembed2.add_field(name="",value="I have an idea to add a suggested setup, based on primaries/secondaries/tertiaries", inline=False)
