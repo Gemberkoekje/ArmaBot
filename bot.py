@@ -21,10 +21,10 @@ async def print_reminder(mission, client, channel):
     await client.wait_until_ready()
     channel = client.get_channel(channel)
     myembed=discord.Embed(
-        title= "<@&" + str(mission.usertoping) + "> mission "+ mission.op + " will start in 30 minutes!",
+        title= "mission "+ mission.op + " will start in 30 minutes!",
         color = Colour.dark_orange()
     )        
-    await channel.send(embed=myembed)
+    await channel.send("<@&" + str(mission.usertoping) + ">", embed=myembed)
     
 
 load_dotenv()
@@ -157,7 +157,7 @@ async def update_trackedmessages(client : Client, mymission : Mission):
             channel = await client.fetch_channel(trackedmessage.channelid)
             message = await channel.fetch_message(trackedmessage.messageid)
             myembed=discord.Embed(
-                title= "mission "+ mymission.op,
+                title= "mission "+ mymission.op+ " ("+str(mymission.id)+")",
                 color = Colour.dark_orange()
             )        
             myembed.add_field(name="Campaign",value=mymission.campaign,inline=False)
@@ -195,14 +195,14 @@ async def update_trackedmessages(client : Client, mymission : Mission):
                 if myreply is not None:
                     if myreply.response == Response.Maybe:
                         rsvpmaybe = rsvpmaybe + 1
-                    myvalue = ""
+                    myvalue = "**"+player.membername + "**: "
                     if myreply.primaryPickId is not None:
                         myvalue = myvalue + Roles(myreply.primaryPickId).name + " | "
                     if myreply.secondaryPickId is not None:
                         myvalue = myvalue + Roles(myreply.secondaryPickId).name + " | "
                     if myreply.tertiaryPickId is not None:
                         myvalue = myvalue + Roles(myreply.tertiaryPickId).name + " | "
-                    myembed3.add_field(name=player.membername,value=myvalue,inline=False)
+                    myembed3.add_field(name="",value=myvalue,inline=False)
                     rsvps=rsvps+1
             myembed3.add_field(name="Total rsvps", value= str(rsvps),inline=False)
             myembed3.add_field(name="Maybe rsvps", value= str(rsvpmaybe),inline=False)
