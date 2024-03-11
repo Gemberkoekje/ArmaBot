@@ -976,22 +976,23 @@ async def armabot(interaction: Interaction):
         myembed.add_field(name="/missiondeleterole",value="Deletes a role to a subdivision from a created mission", inline=False)
         myembed.add_field(name="/missionshow",value="Show a mission. Be aware that this does not get automatically updated (yet)", inline=False)
         myembed.add_field(name="/missionlist",value="Get a list of all missions in the database", inline=False)
+        myembed.add_field(name="/errors",value="Get all the errors", inline=False)
+        myembed.add_field(name="/clearerrors",value="Clear all the errors", inline=False)
         myembed.add_field(name="/respond",value="Allows players to respond to the mission. This assumes there's only 1 mission in the future.", inline=False)
         myembed.add_field(name="/unrespond",value="Allows players to cancel their response to the mission. This assumes there's only 1 mission in the future.", inline=False)
-        myembed2=discord.Embed(
+        myembed3=discord.Embed(
             title= "ARMA Bot To Do List",
             color = Colour.dark_orange()
         )        
-        myembed2.add_field(name="",value="You should be able to cancel your response somehow", inline=False)
-        myembed2.add_field(name="",value="It doesn't work correctly if there are multiple future missions", inline=False)
-        myembed2.add_field(name="",value="Investigate the possibility of adding multiple roles in the same /missionaddrole command, so it becomes less tedious to set up", inline=False)
-        myembed2.add_field(name="",value="I have an idea to add a suggested setup, based on primaries/secondaries/tertiaries", inline=False)
-        myembed2.add_field(name="",value="You should be able to edit mission names, op names etc.", inline=False)
-        myembed2.add_field(name="",value="Add custom names to roles so roles can be more defined", inline=False)
-        myembed2.add_field(name="",value="Allow to read in a role list (JSON) to fill an entire mission in one go.", inline=False)
+        myembed3.add_field(name="",value="It doesn't work correctly if there are multiple future missions", inline=False)
+        myembed3.add_field(name="",value="Investigate the possibility of adding multiple roles in the same /missionaddrole command, so it becomes less tedious to set up", inline=False)
+        myembed3.add_field(name="",value="I have an idea to add a suggested setup, based on primaries/secondaries/tertiaries", inline=False)
+        myembed3.add_field(name="",value="You should be able to edit mission names, op names etc.", inline=False)
+        myembed3.add_field(name="",value="Add custom names to roles so roles can be more defined", inline=False)
+        myembed3.add_field(name="",value="Allow to read in a role list (JSON) to fill an entire mission in one go.", inline=False)
         embedList = []
         embedList.append(myembed)
-        embedList.append(myembed2)
+        embedList.append(myembed3)
         await interaction.response.send_message( embeds= embedList)
     except Exception as err:
         save_error(err)
@@ -1006,15 +1007,32 @@ async def armabot(interaction: Interaction):
 async def errors(interaction: Interaction):
     try:
         errors = load_errors()
-        myembed=discord.Embed(
-            title= "ARMA Bot errors",
-            color = Colour.dark_orange()
-        )        
         for error in errors:
-            myembed.add_field(name="",value=error, inline=False)
-        embedList = []
-        embedList.append(myembed)
-        await interaction.response.send_message( embeds= embedList)
+            myembed=discord.Embed(
+                title= "ARMA Bot errors",
+                color = Colour.dark_orange()
+            )        
+            lines = error.split("\n")
+            for line in lines:
+                myembed.add_field(name="",value=line[:1000], inline=False)
+            embedList = []
+            embedList.append(myembed)
+            await interaction.channel.send( embeds= embedList)
+        await interaction.response.send_message("Errors posted.", ephemeral= True)
+    except Exception as err:
+        save_error(err)
+        await interaction.response.send_message("Something went wrong, please contact Gemberkoekje.", ephemeral= True)
+
+@tree.command(
+    name="clearerrors",
+    description="Clear error logs",
+    guild=discord.Object(id=GUILDID)
+)
+@app_commands.default_permissions(manage_channels=True)
+async def clearerrors(interaction: Interaction):
+    try:
+        save_errors([])
+        await interaction.response.send_message("Errors cleared.", ephemeral= True)
     except Exception as err:
         save_error(err)
         await interaction.response.send_message("Something went wrong, please contact Gemberkoekje.", ephemeral= True)
