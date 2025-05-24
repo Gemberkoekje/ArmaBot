@@ -4,7 +4,7 @@ WORKDIR /src
 
 # Copy solution and restore as distinct layers
 COPY . .
-RUN dotnet restore
+RUN dotnet restore *.slnx
 
 # Copy everything else and build
 WORKDIR /src/ArmaBotCs
