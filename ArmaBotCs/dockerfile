@@ -6,10 +6,10 @@ WORKDIR /src
 COPY . .
 RUN ls -l /src
 RUN find /src
-RUN dotnet restore ArmaBotCs.slnx  --locked-mode --runtime linux-x64
+RUN dotnet restore ArmaBotCs.slnx  --locked-mode
 
 # Copy everything else and build
-RUN dotnet publish ArmaBotCs/ArmaBotCs.csproj -c Release -o /app/publish --no-restore --runtime linux-x64
+RUN dotnet publish ArmaBotCs/ArmaBotCs.csproj -c Release -o /app/publish --no-restore
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final

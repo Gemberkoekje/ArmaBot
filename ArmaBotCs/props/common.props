@@ -5,6 +5,7 @@
     <OutputType>library</OutputType>
     <LangVersion>12</LangVersion>
 	<RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+	<RuntimeIdentifiers>linux-x64;win-x64</RuntimeIdentifiers>
   </PropertyGroup>
 	
 	<PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
