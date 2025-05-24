@@ -4,8 +4,7 @@ WORKDIR /src
 
 # Copy solution and restore as distinct layers
 COPY *.slnx ./
-COPY ArmaBot.Core/*.csproj ./ArmaBot.Core/
-COPY ArmaBotCs/*.csproj ./ArmaBotCs/
+COPY **/*.csproj ./**/
 RUN dotnet restore
 
 # Copy everything else and build
