@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}/armabotcs
+  IMAGE_NAME: gemberkoekje/armabotcs
 
 jobs:
   build-and-push:
@@ -29,6 +29,6 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
       with:
-        context: .
+        context: ./ArmaBotCs
         push: true
-        tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+        tags: ${{ env.REGISTRY }}/gemberkoekje/armabotcs:latest
