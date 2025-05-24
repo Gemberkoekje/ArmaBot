@@ -4,10 +4,11 @@ WORKDIR /src
 
 # Copy solution and restore as distinct layers
 COPY . .
+RUN ls -l /src
+RUN find /src
 RUN dotnet restore ArmaBotCs.slnx  --locked-mode
 
 # Copy everything else and build
-WORKDIR /src/ArmaBotCs
 RUN dotnet publish -c Release -o /app/publish --no-restore
 
 # Build runtime image
