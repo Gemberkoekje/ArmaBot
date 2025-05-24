@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
 # Copy solution and restore as distinct layers
-COPY *.sln ./
+COPY *.slnx ./
 COPY ArmaBot.Core/*.csproj ./ArmaBot.Core/
 COPY ArmaBotCs/*.csproj ./ArmaBotCs/
 RUN dotnet restore
