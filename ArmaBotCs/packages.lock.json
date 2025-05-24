@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dependencies": {
+    "net9.0": {
+      "DotNetProjectFile.Analyzers.Sdk": {
+        "type": "Direct",
+        "requested": "[1.6.0, )",
+        "resolved": "1.6.0",
+        "contentHash": "ihbyOkFV60pQ/wrbTuRiDyPk+MCG4CZT4/8xc+oMCaSENNCAjg3BwWNkv8hywzSLwUPwhipNh6PfA0ZY9Qae3g=="
+      }
+    }
+  }
+}
