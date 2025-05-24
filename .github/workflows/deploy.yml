@@ -33,9 +33,9 @@ jobs:
     - name: Extract version from csproj
       id: get_version
       run: |
-        VERSION=$(xmllint --xpath "string(//Project/PropertyGroup/InformationalVersion)" ArmaBotCs/ArmaBotCs.csproj)
+        VERSION=$(grep -oPm1 "(?<=<InformationalVersion>)[^<]+" ArmaBotCs/ArmaBotCs.csproj)
         if [ -z "$VERSION" ]; then
-          VERSION=$(xmllint --xpath "string(//Project/PropertyGroup/Version)" ArmaBotCs/ArmaBotCs.csproj)
+          VERSION=$(grep -oPm1 "(?<=<Version>)[^<]+" ArmaBotCs/ArmaBotCs.csproj)
         fi
         echo "version=$VERSION" >> $GITHUB_OUTPUT
 
