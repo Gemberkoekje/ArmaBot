@@ -159,3 +159,57 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 env
+
+# Build results
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# Visual Studio Code settings
+.vscode/
+
+# Rider settings
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# ASP.NET secrets
+secrets.json
+
+# Dotnet-specific
+*.dbmdl
+*.pdb
+*.cache
+*.log
+*.vspscc
+*.vssscc
+
+# Publish outputs
+publish/
+*.publish.xml
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# Entity Framework
+Migrations/
+
+# Others
+*.swp
+*.bak
+*.tmp
+
+# Local environment files
+.env
+.env.*

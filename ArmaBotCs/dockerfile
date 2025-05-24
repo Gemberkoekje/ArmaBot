@@ -1,0 +1,20 @@
+# Use the official .NET SDK image to build the app
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+WORKDIR /src
+
+# Copy solution and restore as distinct layers
+COPY *.sln ./
+COPY ArmaBot.Core/*.csproj ./ArmaBot.Core/
+COPY ArmaBotCs/*.csproj ./ArmaBotCs/
+RUN dotnet restore
+
+# Copy everything else and build
+COPY . .
+WORKDIR /src/ArmaBotCs
+RUN dotnet publish -c Release -o /app/publish --no-restore
+
+# Build runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
+WORKDIR /app
+COPY --from=build /app/publish .
+ENTRYPOINT ["dotnet", "ArmaBotCs.dll"]

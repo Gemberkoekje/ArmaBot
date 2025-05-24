@@ -1,0 +1,31 @@
+﻿namespace ArmaBot.Core.Enums;
+
+public enum Role
+{
+    None = 0,
+    SquadLeader = 1,
+    TeamLeader = 2,
+    RTO = 3,
+    FO_JTAC = 4,
+    Medic = 5,
+    Engineer = 6,
+    CBRNSpecialist = 7,
+    AutoRifleman = 8,
+    AntiTank = 9,
+    Grenadier = 10,
+    Sapper = 11,
+    AntiAir = 12,
+    Marksman = 13,
+    Sniper = 14,
+    RiflemanAT = 15,
+    Rifleman = 16,
+    Gunner = 17,
+    Assistant = 18,
+    UAVOperator = 19,
+    Commander = 20,
+    Driver = 21,
+    Pilot = 22,
+    CoPilot = 23,
+    IndirectFireSpecialist = 24,
+    VIP = 25,
+}

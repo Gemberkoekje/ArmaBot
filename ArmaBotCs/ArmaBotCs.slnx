@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/props/">
+    <File Path="props/common.props" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path="../.env.example" />
+    <File Path="../.github/workflows/deploy.yml" />
+    <File Path="../bot.py" />
+    <File Path="../errors.json" />
+    <File Path="../missions.json" />
+    <File Path="../players.json" />
+    <File Path="../trackedmessages.json" />
+    <File Path="dockerfile" />
+  </Folder>
+  <Project Path=".net.csproj" />
+  <Project Path="ArmaBot.Core/ArmaBot.Core.csproj" />
+  <Project Path="ArmaBot.Infrastructure/ArmaBot.Infrastructure.csproj" />
+  <Project Path="ArmaBotCs/ArmaBotCs.csproj" />
+</Solution>
