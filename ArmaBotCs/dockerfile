@@ -4,7 +4,7 @@ WORKDIR /src
 
 # Copy solution and restore as distinct layers
 COPY . .
-RUN dotnet restore *.slnx  --locked-mode
+RUN dotnet restore ArmaBotCs.slnx  --locked-mode
 
 # Copy everything else and build
 WORKDIR /src/ArmaBotCs
