@@ -9,7 +9,7 @@ RUN find /src
 RUN dotnet restore ArmaBotCs.slnx  --locked-mode
 
 # Copy everything else and build
-RUN dotnet publish ArmaBotCs.slnx -c Release -o /app/publish --no-restore
+RUN dotnet publish **/*.csproj -c Release -o /app/publish --no-restore
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
