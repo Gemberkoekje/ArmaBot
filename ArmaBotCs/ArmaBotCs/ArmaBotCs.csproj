@@ -3,7 +3,19 @@
   <Import Project="../props/common.props" />
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+	  <IsPublishable>true</IsPublishable>
+	  <PublishSingleFile>false</PublishSingleFile>
+	  <PublishTrimmed>false</PublishTrimmed>
+	  <PublishReadyToRun>true</PublishReadyToRun>
+	  <SelfContained>false</SelfContained>
+	  <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+	  <CopyOutputSymbolsToPublishDirectory>false</CopyOutputSymbolsToPublishDirectory>
+	  <CopyOutputSymbolsToPublishDirectory>false</CopyOutputSymbolsToPublishDirectory>
+	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <AssemblyVersion>1.0.0.0</AssemblyVersion>
+	  <FileVersion>1.0.0.0</FileVersion>
+	  <InformationalVersion>1.0.0</InformationalVersion>
+	  <TargetFramework>net9.0</TargetFramework>
     <OutputType>exe</OutputType>
     <UserSecretsId>dotnet-ArmaBotCs-e127c4dc-f880-4393-80b1-dcb498171997</UserSecretsId>
   </PropertyGroup>
