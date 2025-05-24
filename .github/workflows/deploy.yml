@@ -30,9 +30,20 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Extract version from csproj
+      id: get_version
+      run: |
+        VERSION=$(xmllint --xpath "string(//Project/PropertyGroup/InformationalVersion)" ArmaBotCs/ArmaBotCs.csproj)
+        if [ -z "$VERSION" ]; then
+          VERSION=$(xmllint --xpath "string(//Project/PropertyGroup/Version)" ArmaBotCs/ArmaBotCs.csproj)
+        fi
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
       with:
         context: ./ArmaBotCs
         push: true
-        tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+        tags: |
+          ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.get_version.outputs.version }}-${{ github.run_number }}
