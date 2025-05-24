@@ -3,11 +3,35 @@
   "WorkspaceRootPath": "C:\\git\\ArmaBot\\ArmaBotCs\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{089100B1-113F-4E66-888A-E83F3999EAFD}|Solution Items{089100B1-113F-4E66-888A-E83F3999EAFD}|C:\\git\\ArmaBot\\.github\\workflows\\deploy.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{FF3BE96F-0063-6EA1-1348-80525DA9D201}|.net.csproj|c:\\git\\armabot\\armabotcs\\props\\common.props||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{FF3BE96F-0063-6EA1-1348-80525DA9D201}|.net.csproj|solutionrelative:props\\common.props||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E1F1E33-83E5-06D7-ADB8-7EB956AB8DF6}|ArmaBot.Infrastructure\\ArmaBot.Infrastructure.csproj|c:\\git\\armabot\\armabotcs\\armabot.infrastructure\\armabot.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{6E1F1E33-83E5-06D7-ADB8-7EB956AB8DF6}|ArmaBot.Infrastructure\\ArmaBot.Infrastructure.csproj|solutionrelative:armabot.infrastructure\\armabot.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF3BE96F-0063-6EA1-1348-80525DA9D201}|.net.csproj|c:\\git\\armabot\\armabotcs\\directory.packages.props||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{FF3BE96F-0063-6EA1-1348-80525DA9D201}|.net.csproj|solutionrelative:directory.packages.props||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E371A02-7FDD-E8F2-09D9-A841D74C0EB6}|ArmaBot.Core\\ArmaBot.Core.csproj|c:\\git\\armabot\\armabotcs\\armabot.core\\armabot.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{4E371A02-7FDD-E8F2-09D9-A841D74C0EB6}|ArmaBot.Core\\ArmaBot.Core.csproj|solutionrelative:armabot.core\\armabot.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF3BE96F-0063-6EA1-1348-80525DA9D201}|.net.csproj|c:\\git\\armabot\\armabotcs\\.net.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{FF3BE96F-0063-6EA1-1348-80525DA9D201}|.net.csproj|solutionrelative:.net.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{21680510-57CA-2BCD-9701-0D8A0406C580}|ArmaBotCs\\ArmaBotCs.csproj|c:\\git\\armabot\\armabotcs\\armabotcs\\armabotcs.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{21680510-57CA-2BCD-9701-0D8A0406C580}|ArmaBotCs\\ArmaBotCs.csproj|solutionrelative:armabotcs\\armabotcs.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{089100B1-113F-4E66-888A-E83F3999EAFD}|Solution Items{089100B1-113F-4E66-888A-E83F3999EAFD}|C:\\git\\ArmaBot\\ArmaBotCs\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{089100B1-113F-4E66-888A-E83F3999EAFD}|Solution Items{089100B1-113F-4E66-888A-E83F3999EAFD}|solutionrelative:dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{089100B1-113F-4E66-888A-E83F3999EAFD}|Solution Items{089100B1-113F-4E66-888A-E83F3999EAFD}|C:\\git\\ArmaBot\\.github\\workflows\\deploy.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4E371A02-7FDD-E8F2-09D9-A841D74C0EB6}|ArmaBot.Core\\ArmaBot.Core.csproj|c:\\git\\armabot\\armabotcs\\armabot.core\\models\\division.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -46,9 +70,6 @@
       "RelativeMoniker": "D:0:0:{4E371A02-7FDD-E8F2-09D9-A841D74C0EB6}|ArmaBot.Core\\ArmaBot.Core.csproj|solutionrelative:armabot.core\\events\\missiondataset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{089100B1-113F-4E66-888A-E83F3999EAFD}|Solution Items{089100B1-113F-4E66-888A-E83F3999EAFD}|C:\\git\\ArmaBot\\bot.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4E371A02-7FDD-E8F2-09D9-A841D74C0EB6}|ArmaBot.Core\\ArmaBot.Core.csproj|c:\\git\\armabot\\armabotcs\\armabot.core\\identifiers\\missionid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4E371A02-7FDD-E8F2-09D9-A841D74C0EB6}|ArmaBot.Core\\ArmaBot.Core.csproj|solutionrelative:armabot.core\\identifiers\\missionid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -69,27 +90,11 @@
       "RelativeMoniker": "D:0:0:{4E371A02-7FDD-E8F2-09D9-A841D74C0EB6}|ArmaBot.Core\\ArmaBot.Core.csproj|solutionrelative:armabot.core\\validators\\missionvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4E371A02-7FDD-E8F2-09D9-A841D74C0EB6}|ArmaBot.Core\\ArmaBot.Core.csproj|c:\\git\\armabot\\armabotcs\\armabot.core\\armabot.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{4E371A02-7FDD-E8F2-09D9-A841D74C0EB6}|ArmaBot.Core\\ArmaBot.Core.csproj|solutionrelative:armabot.core\\armabot.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4E371A02-7FDD-E8F2-09D9-A841D74C0EB6}|ArmaBot.Core\\ArmaBot.Core.csproj|c:\\git\\armabot\\armabotcs\\armabot.core\\globalusings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4E371A02-7FDD-E8F2-09D9-A841D74C0EB6}|ArmaBot.Core\\ArmaBot.Core.csproj|solutionrelative:armabot.core\\globalusings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6E1F1E33-83E5-06D7-ADB8-7EB956AB8DF6}|ArmaBot.Infrastructure\\ArmaBot.Infrastructure.csproj|c:\\git\\armabot\\armabotcs\\armabot.infrastructure\\armabot.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{6E1F1E33-83E5-06D7-ADB8-7EB956AB8DF6}|ArmaBot.Infrastructure\\ArmaBot.Infrastructure.csproj|solutionrelative:armabot.infrastructure\\armabot.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\arie_\\AppData\\Roaming\\Microsoft\\UserSecrets\\dotnet-ArmaBotCs-e127c4dc-f880-4393-80b1-dcb498171997\\secrets.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FF3BE96F-0063-6EA1-1348-80525DA9D201}|.net.csproj|c:\\git\\armabot\\armabotcs\\directory.packages.props||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{FF3BE96F-0063-6EA1-1348-80525DA9D201}|.net.csproj|solutionrelative:directory.packages.props||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FF3BE96F-0063-6EA1-1348-80525DA9D201}|.net.csproj|c:\\git\\armabot\\armabotcs\\.net.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{FF3BE96F-0063-6EA1-1348-80525DA9D201}|.net.csproj|solutionrelative:.net.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{21680510-57CA-2BCD-9701-0D8A0406C580}|ArmaBotCs\\ArmaBotCs.csproj|c:\\git\\armabot\\armabotcs\\armabotcs\\readyresponder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -113,10 +118,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{089100B1-113F-4E66-888A-E83F3999EAFD}|Solution Items{089100B1-113F-4E66-888A-E83F3999EAFD}|C:\\git\\ArmaBot\\.env.example||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{21680510-57CA-2BCD-9701-0D8A0406C580}|ArmaBotCs\\ArmaBotCs.csproj|c:\\git\\armabot\\armabotcs\\armabotcs\\armabotcs.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{21680510-57CA-2BCD-9701-0D8A0406C580}|ArmaBotCs\\ArmaBotCs.csproj|solutionrelative:armabotcs\\armabotcs.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -126,73 +127,210 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "common.props",
+              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\props\\common.props",
+              "RelativeDocumentMoniker": "props\\common.props",
+              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\props\\common.props",
+              "RelativeToolTip": "props\\common.props",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-05-24T13:41:38.788Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "deploy.yml",
               "DocumentMoniker": "C:\\git\\ArmaBot\\.github\\workflows\\deploy.yml",
               "RelativeDocumentMoniker": "..\\.github\\workflows\\deploy.yml",
               "ToolTip": "C:\\git\\ArmaBot\\.github\\workflows\\deploy.yml",
               "RelativeToolTip": "..\\.github\\workflows\\deploy.yml",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAAB0AAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
               "WhenOpened": "2025-05-24T13:14:58.607Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "dockerfile",
               "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\dockerfile",
               "RelativeDocumentMoniker": "dockerfile",
               "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\dockerfile",
               "RelativeToolTip": "dockerfile",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-05-24T13:13:32.916Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "MissionDataSet.cs",
-              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Events\\MissionDataSet.cs",
-              "RelativeDocumentMoniker": "ArmaBot.Core\\Events\\MissionDataSet.cs",
-              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Events\\MissionDataSet.cs",
-              "RelativeToolTip": "ArmaBot.Core\\Events\\MissionDataSet.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAaAAAAAAAAAA==",
+              "DocumentIndex": 17,
+              "Title": "MissionId.cs",
+              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Identifiers\\MissionId.cs",
+              "RelativeDocumentMoniker": "ArmaBot.Core\\Identifiers\\MissionId.cs",
+              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Identifiers\\MissionId.cs",
+              "RelativeToolTip": "ArmaBot.Core\\Identifiers\\MissionId.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T17:27:28.945Z"
+              "WhenOpened": "2025-05-18T15:43:20.793Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Mission.Data.cs",
-              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Models\\Mission.Data.cs",
-              "RelativeDocumentMoniker": "ArmaBot.Core\\Models\\Mission.Data.cs",
-              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Models\\Mission.Data.cs",
-              "RelativeToolTip": "ArmaBot.Core\\Models\\Mission.Data.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "DocumentIndex": 21,
+              "Title": "MissionValidator.cs",
+              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Validators\\MissionValidator.cs",
+              "RelativeDocumentMoniker": "ArmaBot.Core\\Validators\\MissionValidator.cs",
+              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Validators\\MissionValidator.cs",
+              "RelativeToolTip": "ArmaBot.Core\\Validators\\MissionValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T17:25:29.837Z"
+              "WhenOpened": "2025-05-18T15:29:48.587Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Side.cs",
-              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Models\\Side.cs",
-              "RelativeDocumentMoniker": "ArmaBot.Core\\Models\\Side.cs",
-              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Models\\Side.cs",
-              "RelativeToolTip": "ArmaBot.Core\\Models\\Side.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAAAZAAAAAAAAAA==",
+              "DocumentIndex": 11,
+              "Title": "Mission.cs",
+              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Models\\Mission.cs",
+              "RelativeDocumentMoniker": "ArmaBot.Core\\Models\\Mission.cs",
+              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Models\\Mission.cs",
+              "RelativeToolTip": "ArmaBot.Core\\Models\\Mission.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T17:20:50.468Z"
+              "WhenOpened": "2025-05-18T15:21:38.931Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ArmaBotCs.csproj",
+              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBotCs\\ArmaBotCs.csproj",
+              "RelativeDocumentMoniker": "ArmaBotCs\\ArmaBotCs.csproj",
+              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBotCs\\ArmaBotCs.csproj",
+              "RelativeToolTip": "ArmaBotCs\\ArmaBotCs.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-18T10:21:56.964Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Directory.packages.props",
+              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\Directory.packages.props",
+              "RelativeDocumentMoniker": "Directory.packages.props",
+              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\Directory.packages.props",
+              "RelativeToolTip": "Directory.packages.props",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-05-18T10:38:46.428Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ArmaBot.Core.csproj",
+              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\ArmaBot.Core.csproj",
+              "RelativeDocumentMoniker": "ArmaBot.Core\\ArmaBot.Core.csproj",
+              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\ArmaBot.Core.csproj",
+              "RelativeToolTip": "ArmaBot.Core\\ArmaBot.Core.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-18T15:21:14.531Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ArmaBot.Infrastructure.csproj",
+              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Infrastructure\\ArmaBot.Infrastructure.csproj",
+              "RelativeDocumentMoniker": "ArmaBot.Infrastructure\\ArmaBot.Infrastructure.csproj",
+              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Infrastructure\\ArmaBot.Infrastructure.csproj",
+              "RelativeToolTip": "ArmaBot.Infrastructure\\ArmaBot.Infrastructure.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-18T15:22:13.273Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": ".net.csproj",
+              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\.net.csproj",
+              "RelativeDocumentMoniker": ".net.csproj",
+              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\.net.csproj",
+              "RelativeToolTip": ".net.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-18T10:31:16.274Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Side.cs",
+              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Enums\\Side.cs",
+              "RelativeDocumentMoniker": "ArmaBot.Core\\Enums\\Side.cs",
+              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Enums\\Side.cs",
+              "RelativeToolTip": "ArmaBot.Core\\Enums\\Side.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T17:15:05.603Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Role.cs",
+              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Enums\\Role.cs",
+              "RelativeDocumentMoniker": "ArmaBot.Core\\Enums\\Role.cs",
+              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Enums\\Role.cs",
+              "RelativeToolTip": "ArmaBot.Core\\Enums\\Role.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T17:15:46.686Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Response.cs",
+              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Enums\\Response.cs",
+              "RelativeDocumentMoniker": "ArmaBot.Core\\Enums\\Response.cs",
+              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Enums\\Response.cs",
+              "RelativeToolTip": "ArmaBot.Core\\Enums\\Response.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T17:18:06.544Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Subdivision.cs",
+              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Models\\Subdivision.cs",
+              "RelativeDocumentMoniker": "ArmaBot.Core\\Models\\Subdivision.cs",
+              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Models\\Subdivision.cs",
+              "RelativeToolTip": "ArmaBot.Core\\Models\\Subdivision.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T17:18:41.698Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "Division.cs",
               "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Models\\Division.cs",
               "RelativeDocumentMoniker": "ArmaBot.Core\\Models\\Division.cs",
@@ -205,103 +343,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Subdivision.cs",
-              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Models\\Subdivision.cs",
-              "RelativeDocumentMoniker": "ArmaBot.Core\\Models\\Subdivision.cs",
-              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Models\\Subdivision.cs",
-              "RelativeToolTip": "ArmaBot.Core\\Models\\Subdivision.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T17:18:41.698Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Response.cs",
-              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Enums\\Response.cs",
-              "RelativeDocumentMoniker": "ArmaBot.Core\\Enums\\Response.cs",
-              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Enums\\Response.cs",
-              "RelativeToolTip": "ArmaBot.Core\\Enums\\Response.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T17:18:06.544Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Role.cs",
-              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Enums\\Role.cs",
-              "RelativeDocumentMoniker": "ArmaBot.Core\\Enums\\Role.cs",
-              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Enums\\Role.cs",
-              "RelativeToolTip": "ArmaBot.Core\\Enums\\Role.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T17:15:46.686Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "Side.cs",
-              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Enums\\Side.cs",
-              "RelativeDocumentMoniker": "ArmaBot.Core\\Enums\\Side.cs",
-              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Enums\\Side.cs",
-              "RelativeToolTip": "ArmaBot.Core\\Enums\\Side.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAGAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Models\\Side.cs",
+              "RelativeDocumentMoniker": "ArmaBot.Core\\Models\\Side.cs",
+              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Models\\Side.cs",
+              "RelativeToolTip": "ArmaBot.Core\\Models\\Side.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T17:15:05.603Z"
+              "WhenOpened": "2025-05-18T17:20:50.468Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
-              "Title": "MissionId.cs",
-              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Identifiers\\MissionId.cs",
-              "RelativeDocumentMoniker": "ArmaBot.Core\\Identifiers\\MissionId.cs",
-              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Identifiers\\MissionId.cs",
-              "RelativeToolTip": "ArmaBot.Core\\Identifiers\\MissionId.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAAAAAAAAAAAAA==",
+              "Title": "Mission.Data.cs",
+              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Models\\Mission.Data.cs",
+              "RelativeDocumentMoniker": "ArmaBot.Core\\Models\\Mission.Data.cs",
+              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Models\\Mission.Data.cs",
+              "RelativeToolTip": "ArmaBot.Core\\Models\\Mission.Data.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T15:43:20.793Z"
+              "WhenOpened": "2025-05-18T17:25:29.837Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 16,
-              "Title": "MissionValidator.cs",
-              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Validators\\MissionValidator.cs",
-              "RelativeDocumentMoniker": "ArmaBot.Core\\Validators\\MissionValidator.cs",
-              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Validators\\MissionValidator.cs",
-              "RelativeToolTip": "ArmaBot.Core\\Validators\\MissionValidator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Title": "MissionDataSet.cs",
+              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Events\\MissionDataSet.cs",
+              "RelativeDocumentMoniker": "ArmaBot.Core\\Events\\MissionDataSet.cs",
+              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Events\\MissionDataSet.cs",
+              "RelativeToolTip": "ArmaBot.Core\\Events\\MissionDataSet.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T15:29:48.587Z"
+              "WhenOpened": "2025-05-18T17:27:28.945Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Mission.cs",
-              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Models\\Mission.cs",
-              "RelativeDocumentMoniker": "ArmaBot.Core\\Models\\Mission.cs",
-              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\Models\\Mission.cs",
-              "RelativeToolTip": "ArmaBot.Core\\Models\\Mission.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T15:21:38.931Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "ArmaBot.Core.csproj",
-              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\ArmaBot.Core.csproj",
-              "RelativeDocumentMoniker": "ArmaBot.Core\\ArmaBot.Core.csproj",
-              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\ArmaBot.Core.csproj",
-              "RelativeToolTip": "ArmaBot.Core\\ArmaBot.Core.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-05-18T15:21:14.531Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 18,
               "Title": "HostBuilder.cs",
               "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBotCs\\HostBuilder.cs",
               "RelativeDocumentMoniker": "ArmaBotCs\\HostBuilder.cs",
@@ -309,23 +390,12 @@
               "RelativeToolTip": "ArmaBotCs\\HostBuilder.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAWwB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T12:51:11.426Z"
+              "WhenOpened": "2025-05-18T12:51:11.426Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "ArmaBotCs.csproj",
-              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBotCs\\ArmaBotCs.csproj",
-              "RelativeDocumentMoniker": "ArmaBotCs\\ArmaBotCs.csproj",
-              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBotCs\\ArmaBotCs.csproj",
-              "RelativeToolTip": "ArmaBotCs\\ArmaBotCs.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-05-18T10:21:56.964Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 20,
               "Title": "InfoCommand.cs",
               "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBotCs\\Commands\\InfoCommand.cs",
               "RelativeDocumentMoniker": "ArmaBotCs\\Commands\\InfoCommand.cs",
@@ -333,11 +403,12 @@
               "RelativeToolTip": "ArmaBotCs\\Commands\\InfoCommand.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAjwCIAAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T11:04:57.715Z"
+              "WhenOpened": "2025-05-18T11:04:57.715Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 19,
               "Title": "ConnectionResponder.cs",
               "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBotCs\\ConnectionResponder.cs",
               "RelativeDocumentMoniker": "ArmaBotCs\\ConnectionResponder.cs",
@@ -345,11 +416,12 @@
               "RelativeToolTip": "ArmaBotCs\\ConnectionResponder.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAD4vx4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T11:26:27.077Z"
+              "WhenOpened": "2025-05-18T11:26:27.077Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 22,
               "Title": "GlobalUsings.cs",
               "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Core\\GlobalUsings.cs",
               "RelativeDocumentMoniker": "ArmaBot.Core\\GlobalUsings.cs",
@@ -357,27 +429,12 @@
               "RelativeToolTip": "ArmaBot.Core\\GlobalUsings.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T15:40:41.976Z"
+              "WhenOpened": "2025-05-18T15:40:41.976Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "ArmaBot.Infrastructure.csproj",
-              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Infrastructure\\ArmaBot.Infrastructure.csproj",
-              "RelativeDocumentMoniker": "ArmaBot.Infrastructure\\ArmaBot.Infrastructure.csproj",
-              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBot.Infrastructure\\ArmaBot.Infrastructure.csproj",
-              "RelativeToolTip": "ArmaBot.Infrastructure\\ArmaBot.Infrastructure.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-05-18T15:22:13.273Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "ReadyResponder.cs",
               "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBotCs\\ReadyResponder.cs",
               "RelativeDocumentMoniker": "ArmaBotCs\\ReadyResponder.cs",
@@ -385,11 +442,12 @@
               "RelativeToolTip": "ArmaBotCs\\ReadyResponder.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T11:00:45.798Z"
+              "WhenOpened": "2025-05-18T11:00:45.798Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBotCs\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "ArmaBotCs\\Properties\\launchSettings.json",
@@ -397,23 +455,12 @@
               "RelativeToolTip": "ArmaBotCs\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-18T10:43:04.065Z"
+              "WhenOpened": "2025-05-18T10:43:04.065Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "Directory.packages.props",
-              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\Directory.packages.props",
-              "RelativeDocumentMoniker": "Directory.packages.props",
-              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\Directory.packages.props",
-              "RelativeToolTip": "Directory.packages.props",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2025-05-18T10:38:46.428Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "Worker.cs",
               "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBotCs\\Worker.cs",
               "RelativeDocumentMoniker": "ArmaBotCs\\Worker.cs",
@@ -421,11 +468,12 @@
               "RelativeToolTip": "ArmaBotCs\\Worker.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T10:31:49.947Z"
+              "WhenOpened": "2025-05-18T10:31:49.947Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBotCs\\Program.cs",
               "RelativeDocumentMoniker": "ArmaBotCs\\Program.cs",
@@ -433,11 +481,12 @@
               "RelativeToolTip": "ArmaBotCs\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T10:36:17.444Z"
+              "WhenOpened": "2025-05-18T10:36:17.444Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\ArmaBotCs\\appsettings.json",
               "RelativeDocumentMoniker": "ArmaBotCs\\appsettings.json",
@@ -445,11 +494,12 @@
               "RelativeToolTip": "ArmaBotCs\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-18T11:22:08.577Z"
+              "WhenOpened": "2025-05-18T11:22:08.577Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 23,
               "Title": "secrets.json",
               "DocumentMoniker": "C:\\Users\\arie_\\AppData\\Roaming\\Microsoft\\UserSecrets\\dotnet-ArmaBotCs-e127c4dc-f880-4393-80b1-dcb498171997\\secrets.json",
               "RelativeDocumentMoniker": "..\\..\\..\\Users\\arie_\\AppData\\Roaming\\Microsoft\\UserSecrets\\dotnet-ArmaBotCs-e127c4dc-f880-4393-80b1-dcb498171997\\secrets.json",
@@ -457,23 +507,12 @@
               "RelativeToolTip": "..\\..\\..\\Users\\arie_\\AppData\\Roaming\\Microsoft\\UserSecrets\\dotnet-ArmaBotCs-e127c4dc-f880-4393-80b1-dcb498171997\\secrets.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-18T11:22:17.225Z"
+              "WhenOpened": "2025-05-18T11:22:17.225Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": ".net.csproj",
-              "DocumentMoniker": "C:\\git\\ArmaBot\\ArmaBotCs\\.net.csproj",
-              "RelativeDocumentMoniker": ".net.csproj",
-              "ToolTip": "C:\\git\\ArmaBot\\ArmaBotCs\\.net.csproj",
-              "RelativeToolTip": ".net.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-05-18T10:31:16.274Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": ".env.example",
               "DocumentMoniker": "C:\\git\\ArmaBot\\.env.example",
               "RelativeDocumentMoniker": "..\\.env.example",
@@ -481,45 +520,12 @@
               "RelativeToolTip": "..\\.env.example",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-05-18T10:27:31.381Z"
+              "WhenOpened": "2025-05-18T10:27:31.381Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "a2d18549-caf4-4940-8ab6-adaa9f8a0c9f",
-        "Display": 2,
-        "X": 642,
-        "Y": 374,
-        "Width": 1570,
-        "Height": 759,
-        "WindowState": 2
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "bot.py",
-              "DocumentMoniker": "C:\\git\\ArmaBot\\bot.py",
-              "RelativeDocumentMoniker": "..\\bot.py",
-              "ToolTip": "C:\\git\\ArmaBot\\bot.py",
-              "RelativeToolTip": "..\\bot.py",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAAAEsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2025-05-18T17:14:03.365Z",
-              "EditorCaption": ""
             }
           ]
         }

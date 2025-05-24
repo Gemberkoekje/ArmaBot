@@ -6,6 +6,11 @@
     <LangVersion>12</LangVersion>
 	<RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
+	
+	<PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+		<RestoreLockedMode>true</RestoreLockedMode>
+	</PropertyGroup>
 
   <PropertyGroup Label="Package">
     <IsPackable>false</IsPackable>
