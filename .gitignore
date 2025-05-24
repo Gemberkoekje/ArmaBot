@@ -213,3 +213,5 @@ Migrations/
 # Local environment files
 .env
 .env.*
+
+.vs/
