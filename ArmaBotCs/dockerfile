@@ -3,12 +3,10 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
 # Copy solution and restore as distinct layers
-COPY *.slnx ./
-COPY **/*.csproj ./**/
+COPY . .
 RUN dotnet restore
 
 # Copy everything else and build
-COPY . .
 WORKDIR /src/ArmaBotCs
 RUN dotnet publish -c Release -o /app/publish --no-restore
 
