@@ -39,6 +39,15 @@ jobs:
         fi
         echo "version=$VERSION" >> $GITHUB_OUTPUT
 
+    - name: Show version in summary
+      run: |
+        echo "::notice title=Build Version::${{ steps.get_version.outputs.version }}-${{ github.run_number }}"
+
+    - name: Add version to job summary
+      run: |
+        echo "## Build Version" >> $GITHUB_STEP_SUMMARY
+        echo "${{ steps.get_version.outputs.version }}-${{ github.run_number }}" >> $GITHUB_STEP_SUMMARY
+
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
       with:
