@@ -31,4 +31,4 @@ jobs:
       with:
         context: ./ArmaBotCs
         push: true
-        tags: ${{ env.REGISTRY }}/gemberkoekje/armabotcs:latest
+        tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
