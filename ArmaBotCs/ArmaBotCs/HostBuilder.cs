@@ -1,8 +1,11 @@
-﻿using ArmaBotCs.Commands;
+﻿using ArmaBot.Infrastructure.Postgress;
+using ArmaBot.Infrastructure.Postgress.Podclaim;
+using ArmaBotCs.Commands;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Polly;
 using Remora.Commands.Extensions;
 using Remora.Discord.API.Abstractions.Gateway.Commands;
 using Remora.Discord.Commands.Extensions;
@@ -23,7 +26,7 @@ public static class MyHostBuilder
     /// </summary>
     /// <param name="args">The arguments passed to the application.</param>
     /// <returns>The host builder.</returns>
-    public static IHostBuilder CreateHostBuilder(string[] args) => Host.CreateDefaultBuilder(args)
+    public static IHostBuilder CreateHostBuilder(string[] args, string podId) => Host.CreateDefaultBuilder(args)
        .ConfigureLogging(logging => logging.AddConsole())
     .AddDiscordService(services =>
     {
@@ -34,11 +37,14 @@ public static class MyHostBuilder
                    "No bot token has been provided. Set the Discord:Token environment variable to a " +
                    "valid token.");
     })
-    .ConfigureServices((_, services) =>
+    .ConfigureServices((context, services) =>
     {
         services.Configure<DiscordGatewayClientOptions>(g => g.Intents |= GatewayIntents.MessageContents);
+        services.AddSingleton(new PodIdProvider(podId));
         services.AddDiscordCommands(true)
             .AddCommandTree()
             .WithCommandGroup<InfoCommand>();
+        services.AddPostgressServices(context.Configuration);
+        services.AddHostedService<Worker>();
     });
 }

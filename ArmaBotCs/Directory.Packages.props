@@ -12,6 +12,7 @@
     <PackageVersion Include="FluentAssertions.Analyzers" Version="1.0.0" />
     <PackageVersion Include="FluentValidation" Version="12.0.0" />
     <PackageVersion Include="IDisposableAnalyzers " Version="1.0.0" />
+    <PackageVersion Include="Marten" Version="7.40.4" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.Analyzers" Version="9.0.5" />
     <PackageVersion Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" />
     <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="1.0.0" />

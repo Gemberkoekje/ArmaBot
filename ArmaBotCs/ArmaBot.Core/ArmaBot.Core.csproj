@@ -5,6 +5,7 @@
 	<PropertyGroup>
 		<TargetFramework>net9.0</TargetFramework>
 		<OutputType>library</OutputType>
+		<UserSecretsId>bdb1b1c0-42fb-481d-8be6-ab5a702878ea</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>

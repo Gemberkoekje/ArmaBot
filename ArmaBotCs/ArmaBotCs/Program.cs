@@ -1,19 +1,53 @@
-using ArmaBotCs;
+using ArmaBot.Infrastructure.Postgress;
+using ArmaBot.Infrastructure.Postgress.Podclaim;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Remora.Discord.Commands.Services;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
-var host = MyHostBuilder.CreateHostBuilder(args)
-    .UseConsoleLifetime()
-    .Build();
+namespace ArmaBotCs;
 
-var slashService = host.Services.GetRequiredService<SlashService>();
-var updateSlash = await slashService.UpdateSlashCommandsAsync();
-var log = host.Services.GetRequiredService<ILogger<Program>>();
-if (!updateSlash.IsSuccess)
+internal sealed class Program
 {
-    log.LogWarning("Failed to update slash commands: {Reason}", updateSlash.Error.Message);
-}
+    private Program() { }
 
-await host.RunAsync();
+    public static async Task Main(string[] args)
+    {
+        var podId = Guid.NewGuid().ToString();
+#if DEBUG
+        podId = "debug-pod"; // Use a fixed pod ID in debug mode for easier testing
+#endif
+        var cancellationToken = CancellationToken.None;
+
+        while (true)
+        {
+            // Build a minimal service provider to access configuration and pod claim service
+            using var configHost = Host.CreateDefaultBuilder(args)
+                .ConfigureServices((context, services) =>
+                {
+                    services.AddPostgressServices(context.Configuration);
+                })
+                .Build();
+
+            var config = configHost.Services.GetRequiredService<IConfiguration>();
+            var discordToken = config.GetValue<string>("Discord:Token");
+
+            var podClaimService = configHost.Services.GetRequiredService<IPodClaimService>();
+            if (await podClaimService.TryClaimPodAsync(discordToken, podId, cancellationToken))
+            {
+                // Pod claimed, now build and run the full host (with Discord)
+                var host = MyHostBuilder.CreateHostBuilder(args, podId).Build();
+                await host.RunAsync();
+                break;
+            }
+            else
+            {
+                // Pod not claimed, wait and retry
+                Console.WriteLine("Pod claim failed. Retrying in 10 minutes...");
+                await Task.Delay(TimeSpan.FromMinutes(10), cancellationToken);
+            }
+        }
+    }
+}
