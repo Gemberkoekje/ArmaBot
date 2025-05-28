@@ -1,7 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="../props/common.props" />
-
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <UserSecretsId>bdb1b1c0-42fb-481d-8be6-ab5a702878ea</UserSecretsId>
