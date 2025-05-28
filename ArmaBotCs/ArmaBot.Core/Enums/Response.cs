@@ -1,6 +1,6 @@
-﻿namespace ArmaBot.Core.Enums;
+namespace ArmaBot.Core.Enums;
 
-public enum Response
+internal enum Response
 {
     None = 0,
     Yes = 1,

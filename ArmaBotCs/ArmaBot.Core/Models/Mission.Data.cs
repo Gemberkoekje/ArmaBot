@@ -1,9 +1,9 @@
-﻿using ArmaBot.Core.Events;
+using ArmaBot.Core.Events;
 using Qowaiv.Validation.Abstractions;
 
 namespace ArmaBot.Core.Models;
 
-public partial class Mission
+internal partial class Mission
 {
     public MissionData MissionData { get; private set; }
 

@@ -4,6 +4,7 @@
   </Folder>
   <Folder Name="/Solution Items/">
     <File Path="../.env.example" />
+    <File Path="../.github/dependabot.yml" />
     <File Path="../.github/workflows/deploy.yml" />
     <File Path="../bot.py" />
     <File Path="../errors.json" />
@@ -11,6 +12,7 @@
     <File Path="../players.json" />
     <File Path="../trackedmessages.json" />
     <File Path="dockerfile" />
+    <File Path="nobom.ps1" />
   </Folder>
   <Project Path=".net.csproj" />
   <Project Path="ArmaBot.Core/ArmaBot.Core.csproj" />

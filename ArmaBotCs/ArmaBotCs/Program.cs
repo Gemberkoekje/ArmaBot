@@ -15,9 +15,10 @@ internal sealed class Program
 
     public static async Task Main(string[] args)
     {
-        var podId = Guid.NewGuid().ToString();
 #if DEBUG
-        podId = "debug-pod"; // Use a fixed pod ID in debug mode for easier testing
+        const string podId = "debug-pod"; // Use a fixed pod ID in debug mode for easier testing
+#else
+        var podId = Guid.NewGuid().ToString();
 #endif
         var cancellationToken = CancellationToken.None;
 

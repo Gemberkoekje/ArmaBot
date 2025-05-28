@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 using Remora.Discord.API.Abstractions.Gateway.Events;
 using Remora.Discord.Gateway.Responders;
 using Remora.Results;
@@ -7,14 +7,9 @@ using System.Threading.Tasks;
 
 namespace ArmaBotCs;
 
-public sealed class ReadyResponder : IResponder<IReady>
+internal sealed class ReadyResponder(ILogger<ReadyResponder> logger) : IResponder<IReady>
 {
-    private readonly ILogger<ReadyResponder> _logger;
-
-    public ReadyResponder(ILogger<ReadyResponder> logger)
-    {
-        _logger = logger;
-    }
+    private readonly ILogger<ReadyResponder> _logger = logger;
 
     public Task<Result> RespondAsync(IReady gatewayEvent, CancellationToken ct = default)
     {

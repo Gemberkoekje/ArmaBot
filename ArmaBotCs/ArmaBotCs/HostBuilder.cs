@@ -1,30 +1,26 @@
-﻿using ArmaBot.Infrastructure.Postgress;
+using ArmaBot.Infrastructure.Postgress;
 using ArmaBot.Infrastructure.Postgress.Podclaim;
 using ArmaBotCs.Commands;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Polly;
 using Remora.Commands.Extensions;
 using Remora.Discord.API.Abstractions.Gateway.Commands;
 using Remora.Discord.Commands.Extensions;
 using Remora.Discord.Gateway;
 using Remora.Discord.Hosting.Extensions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ArmaBotCs;
 
-public static class MyHostBuilder
+internal static class MyHostBuilder
 {
     /// <summary>
     /// Creates a generic application host builder.
     /// </summary>
     /// <param name="args">The arguments passed to the application.</param>
+    /// <param name="podId">The ID of the pod running.</param>
     /// <returns>The host builder.</returns>
     public static IHostBuilder CreateHostBuilder(string[] args, string podId) => Host.CreateDefaultBuilder(args)
        .ConfigureLogging(logging => logging.AddConsole())

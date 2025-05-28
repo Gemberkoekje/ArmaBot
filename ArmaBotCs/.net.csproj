@@ -3,12 +3,12 @@
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
   </PropertyGroup>
-
+  
   <ItemGroup>
     <AdditionalFiles Include="*.yaml" />
-    <AdditionalFiles Include="props/**" />
+    <AdditionalFiles Include="src/props/**" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <PackageReference Include="DotNetProjectFile.Analyzers.Sdk" PrivateAssets="all" />
   </ItemGroup>

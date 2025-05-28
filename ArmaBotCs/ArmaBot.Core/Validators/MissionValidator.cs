@@ -1,4 +1,4 @@
-﻿using ArmaBot.Core.Models;
+using ArmaBot.Core.Models;
 using Qowaiv.Validation.Fluent;
 
 namespace ArmaBot.Core.Validators;

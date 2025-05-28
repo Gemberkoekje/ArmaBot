@@ -1,6 +1,6 @@
-﻿namespace ArmaBot.Core.Enums;
+namespace ArmaBot.Core.Enums;
 
-public enum Role
+internal enum Role
 {
     None = 0,
     SquadLeader = 1,

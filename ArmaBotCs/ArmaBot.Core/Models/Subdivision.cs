@@ -1,11 +1,11 @@
-﻿using ArmaBot.Core.Enums;
+using ArmaBot.Core.Enums;
 using System.Collections.Immutable;
 
 namespace ArmaBot.Core.Models;
 
-public sealed class Subdivision
+internal sealed class Subdivision
 {
-    public required string Name { get; init; }
+    required public string Name { get; init; }
 
-    public required ImmutableArray<Role> Roles { get; init; }
+    required public ImmutableArray<Role> Roles { get; init; }
 }

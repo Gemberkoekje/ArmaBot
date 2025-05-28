@@ -12,10 +12,8 @@
     <PackageVersion Include="FluentAssertions.Analyzers" Version="1.0.0" />
     <PackageVersion Include="FluentValidation" Version="12.0.0" />
     <PackageVersion Include="IDisposableAnalyzers " Version="1.0.0" />
-    <PackageVersion Include="Marten" Version="7.40.4" />
+    <PackageVersion Include="Marten" Version="7.40.5" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.Analyzers" Version="9.0.5" />
-    <PackageVersion Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" />
-    <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="1.0.0" />
     <PackageVersion Include="Moq.Analyzers" Version="1.0.0" />
     <PackageVersion Include="NSubstitute.Analyzers.CSharp" Version="1.0.0" />
     <PackageVersion Include="NUnit.Analyzers" Version="1.0.0" />
@@ -24,9 +22,9 @@
     <PackageVersion Include="Qowaiv.CodeGeneration.SingleValueObjects" Version="1.1.1" />
     <PackageVersion Include="Qowaiv.DomainModel" Version="2.0.0" />
     <PackageVersion Include="Qowaiv.Validation.Fluent" Version="2.0.0" />
-    <PackageVersion Include="Remora.Discord" Version="2025.1.0" />
-    <PackageVersion Include="Remora.Discord.Commands" Version="29.0.0" />
-    <PackageVersion Include="Remora.Discord.Hosting" Version="7.0.0" />
+    <PackageVersion Include="Remora.Discord" Version="2025.2.0" />
+    <PackageVersion Include="Remora.Discord.Commands" Version="30.0.0" />
+    <PackageVersion Include="Remora.Discord.Hosting" Version="7.0.1" />
     <PackageVersion Include="SerilogAnalyzer" Version="0.15.0" />
     <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.10.0.116381" />
     <PackageVersion Include="StyleCop.Analyzers" Version="1.1.118" />

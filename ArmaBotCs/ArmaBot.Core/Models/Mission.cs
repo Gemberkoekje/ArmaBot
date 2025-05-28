@@ -1,10 +1,10 @@
-﻿using ArmaBot.Core.Identifiers;
+using ArmaBot.Core.Identifiers;
 using ArmaBot.Core.Validators;
 using Qowaiv.DomainModel;
 
 namespace ArmaBot.Core.Models;
 
-public partial class Mission : Aggregate<Mission, MissionId>
+internal partial class Mission : Aggregate<Mission, MissionId>
 {
     public Mission() : this(MissionId.Next())
     {

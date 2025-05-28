@@ -1,6 +1,6 @@
-﻿namespace ArmaBot.Core.Enums;
+namespace ArmaBot.Core.Enums;
 
-public enum Side
+internal enum Side
 {
     None = 0,
     Blufor = 1,

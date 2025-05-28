@@ -1,8 +1,12 @@
-﻿namespace ArmaBot.Infrastructure.Postgress.Podclaim;
+namespace ArmaBot.Infrastructure.Postgress.Podclaim;
 
-public class PodIdProvider
+/// <summary>
+/// Provides the identifier for a specific pod instance.
+/// </summary>
+public sealed class PodIdProvider(string podId)
 {
-    public string PodId { get; }
-
-    public PodIdProvider(string podId) => PodId = podId;
+    /// <summary>
+    /// Gets the unique identifier of the pod.
+    /// </summary>
+    public string PodId { get; } = podId;
 }

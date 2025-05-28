@@ -22,11 +22,11 @@
       },
       "Marten": {
         "type": "Direct",
-        "requested": "[7.40.4, )",
-        "resolved": "7.40.4",
-        "contentHash": "OahGGEA1WLnIiwH3qeS9IDTDTjTcgWVd5y1ItQMqAizqE4JoVKK6T4LHOcDxjg0TMel48SiJ8LrGSGWKQb1LJw==",
+        "requested": "[7.40.5, )",
+        "resolved": "7.40.5",
+        "contentHash": "yVF65aRKRg6FijV6mLsZjpvZdTp00lUffeXqpdmWsFw/Z+9QN3gsL4bZg+9j54KJKtzOda3DJruE+kuPBTEYSA==",
         "dependencies": {
-          "FSharp.Core": "9.0.100",
+          "FSharp.Core": "8.0.100",
           "JasperFx.CodeGeneration": "3.7.2",
           "JasperFx.Core": "1.12.0",
           "JasperFx.RuntimeCompiler": "3.7.2",
@@ -104,41 +104,41 @@
       },
       "Remora.Discord": {
         "type": "Direct",
-        "requested": "[2025.1.0, )",
-        "resolved": "2025.1.0",
-        "contentHash": "JFs1LG4RVgKP6I9+tKs4VZba3SrAky/DyXFvTZqB1dLCri3AupcLoP+rv060XgbLXbmH8p2uirLzA7whgI6y8A==",
+        "requested": "[2025.2.0, )",
+        "resolved": "2025.2.0",
+        "contentHash": "wzUdexahtma6xeWUycrRM5VCDzXnqUo/8AcicwzLpKwbxAeIo1/4wpIWWVAadkzZXZ5r0bW3/ZWpXl/riHZN3w==",
         "dependencies": {
-          "Remora.Discord.Caching": "40.0.0",
-          "Remora.Discord.Commands": "29.0.0",
-          "Remora.Discord.Extensions": "6.0.0",
-          "Remora.Discord.Hosting": "7.0.0",
-          "Remora.Discord.Interactivity": "6.0.0",
-          "Remora.Discord.Pagination": "5.0.0"
+          "Remora.Discord.Caching": "40.0.1",
+          "Remora.Discord.Commands": "30.0.0",
+          "Remora.Discord.Extensions": "6.0.1",
+          "Remora.Discord.Hosting": "7.0.1",
+          "Remora.Discord.Interactivity": "6.0.1",
+          "Remora.Discord.Pagination": "5.1.0"
         }
       },
       "Remora.Discord.Commands": {
         "type": "Direct",
-        "requested": "[29.0.0, )",
-        "resolved": "29.0.0",
-        "contentHash": "Rlr3dCtydBhc1fXNv29tSkAqyqEAzeQlZdD93JhV/YstC8FnXYTfzuj3xqpR8JxvgqaO5tUyfDIOzFX+sweoaA==",
+        "requested": "[30.0.0, )",
+        "resolved": "30.0.0",
+        "contentHash": "5Clg8KBIEyJSw7h+HTnT8pISL5i2az4ahzr/aWiWLbBCXxqO7bb4ZA6V4Bo2q1q/PviF7OLmA3TGfIsIQWmMxA==",
         "dependencies": {
           "FuzzySharp": "2.0.2",
           "Humanizer.Core": "2.14.1",
           "NGettext": "0.6.7",
-          "Remora.Commands": "11.0.1",
-          "Remora.Discord.Gateway": "13.0.0",
+          "Remora.Commands": "11.0.2",
+          "Remora.Discord.Gateway": "13.0.1",
           "Remora.Extensions.Options.Immutable": "2.0.0",
           "System.ComponentModel.Annotations": "5.0.0"
         }
       },
       "Remora.Discord.Hosting": {
         "type": "Direct",
-        "requested": "[7.0.0, )",
-        "resolved": "7.0.0",
-        "contentHash": "TM2ZRJtKHNIu6JixIjAYQ0mRWVHRR/023kozN4fJKswmxXMsY8mM58EscZTgFzi50Q/hiTgj+FhLs4wI1/40wA==",
+        "requested": "[7.0.1, )",
+        "resolved": "7.0.1",
+        "contentHash": "6Os+bCiELZwOxDXb3dBu/vBaPGHeYBybqWg5ibV+RkwyBNAPF9FIrG5mKFBiFdGOl8uaFbGh5/lXsW3+serOZQ==",
         "dependencies": {
-          "Microsoft.Extensions.Hosting.Abstractions": "9.0.2",
-          "Remora.Discord.Gateway": "13.0.0",
+          "Microsoft.Extensions.Hosting.Abstractions": "9.0.5",
+          "Remora.Discord.Gateway": "13.0.1",
           "Remora.Extensions.Options.Immutable": "2.0.0"
         }
       },
@@ -172,8 +172,8 @@
       },
       "FSharp.Core": {
         "type": "Transitive",
-        "resolved": "9.0.100",
-        "contentHash": "ye8yagHGsH08H2Twno5GRWkSbrMtxK/SWiHuPcF+3nODpW65/VJ8RO0aWxp8n9+KQbmahg90wAEL3TEXjF0r6A=="
+        "resolved": "8.0.100",
+        "contentHash": "ZOVZ/o+jI3ormTZOa28Wh0tSRoyle1f7lKFcUN61sPiXI7eDZu8eSveFybgTeyIEyW0ujjp31cp7GOglDgsNEg=="
       },
       "FuzzySharp": {
         "type": "Transitive",
@@ -246,6 +246,11 @@
           "System.Threading.Channels": "7.0.0",
           "System.Threading.Tasks.Extensions": "4.5.4"
         }
+      },
+      "Microsoft.CodeAnalysis.Analyzers": {
+        "type": "Transitive",
+        "resolved": "3.3.4",
+        "contentHash": "AxkxcPR+rheX0SmvpLVIGLhOUXAKG56a64kV9VQZ4y9gR9ZmPXnqZvHJnmwLSwzrEP6junUF11vuc+aqo5r68g=="
       },
       "Microsoft.CodeAnalysis.Common": {
         "type": "Transitive",
@@ -378,22 +383,22 @@
       },
       "Microsoft.Extensions.Caching.Abstractions": {
         "type": "Transitive",
-        "resolved": "9.0.2",
-        "contentHash": "a7QhA25n+BzSM5r5d7JznfyluMBGI7z3qyLlFviZ1Eiqv6DdiK27sLZdP/rpYirBM6UYAKxu5TbmfhIy13GN9A==",
+        "resolved": "9.0.5",
+        "contentHash": "RV6wOTvH5BeVRs6cvxFuaV1ut05Dklpvq19XRO1JxAayfLWYIEP7K94aamY0iSUhoehWk1X5H6gMcbZkHuBjew==",
         "dependencies": {
-          "Microsoft.Extensions.Primitives": "9.0.2"
+          "Microsoft.Extensions.Primitives": "9.0.5"
         }
       },
       "Microsoft.Extensions.Caching.Memory": {
         "type": "Transitive",
-        "resolved": "9.0.2",
-        "contentHash": "AlEfp0DMz8E1h1Exi8LBrUCNmCYcGDfSM4F/uK1D1cYx/R3w0LVvlmjICqxqXTsy7BEZaCf5leRZY2FuPEiFaw==",
+        "resolved": "9.0.5",
+        "contentHash": "qDmoAzIUBup5KZG1Abv51ifbHMCWFnaXbt05l+Sd92mLOpF9OwHOuoxu3XhzXaPGfq0Ns3pv1df5l8zuKjFgGw==",
         "dependencies": {
-          "Microsoft.Extensions.Caching.Abstractions": "9.0.2",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.2",
-          "Microsoft.Extensions.Logging.Abstractions": "9.0.2",
-          "Microsoft.Extensions.Options": "9.0.2",
-          "Microsoft.Extensions.Primitives": "9.0.2"
+          "Microsoft.Extensions.Caching.Abstractions": "9.0.5",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.5",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.5",
+          "Microsoft.Extensions.Options": "9.0.5",
+          "Microsoft.Extensions.Primitives": "9.0.5"
         }
       },
       "Microsoft.Extensions.Configuration": {
@@ -542,23 +547,23 @@
       },
       "Microsoft.Extensions.Http": {
         "type": "Transitive",
-        "resolved": "9.0.2",
-        "contentHash": "34+kcwxPZr3Owk9eZx268+gqGNB8G/8Y96gZHomxam0IOH08FhPBjPrLWDtKdVn4+sVUUJnJMpECSTJi4XXCcg==",
+        "resolved": "9.0.5",
+        "contentHash": "6vbo3XjyEc+w/kv/Dkfv9NA7iSdIdX5dlU9Shk3wJJ0fiZpCVzVW5FJtNoIePX5hS0ENNpHPClq/qtq06yM4FQ==",
         "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "9.0.2",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.2",
-          "Microsoft.Extensions.Diagnostics": "9.0.2",
-          "Microsoft.Extensions.Logging": "9.0.2",
-          "Microsoft.Extensions.Logging.Abstractions": "9.0.2",
-          "Microsoft.Extensions.Options": "9.0.2"
+          "Microsoft.Extensions.Configuration.Abstractions": "9.0.5",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.5",
+          "Microsoft.Extensions.Diagnostics": "9.0.5",
+          "Microsoft.Extensions.Logging": "9.0.5",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.5",
+          "Microsoft.Extensions.Options": "9.0.5"
         }
       },
       "Microsoft.Extensions.Http.Polly": {
         "type": "Transitive",
-        "resolved": "9.0.2",
-        "contentHash": "2y5a9Iijc9iTUN1M7rH2+kUMJPuuxTgfUyL9iAOqe4ueuWtTfG1SVX/oAj35q46OV4kSgCeJC82dLQ96xOo/RQ==",
+        "resolved": "9.0.5",
+        "contentHash": "VCFPTik1LjPuUiS3vHy65UUzffm7MKGG6tBTFOrDklGDT36BsB9srrW+otYVT7nw6a/NbE8SM4kKsPzuRWxLRA==",
         "dependencies": {
-          "Microsoft.Extensions.Http": "9.0.2",
+          "Microsoft.Extensions.Http": "9.0.5",
           "Polly": "7.2.4",
           "Polly.Extensions.Http": "3.0.0"
         }
@@ -784,30 +789,30 @@
       },
       "Remora.Commands": {
         "type": "Transitive",
-        "resolved": "11.0.1",
-        "contentHash": "DntjOwi7c0j6sfzXOiGny6E81WIG6GulZ3bUBGkNfUvWY01LabNbRncw/QWP/UxhEpXwubj/o601SxMwiGNgOw==",
+        "resolved": "11.0.2",
+        "contentHash": "F+bNBOlgUA/FvImMdtxmYWWIkqHZs6UMviFJ09yQg4HuXFZgcLCT1EVGz8XZ1up2+jbV/sEGLC3PUhvgfpElWA==",
         "dependencies": {
-          "Microsoft.Extensions.Options": "9.0.2",
-          "OneOf": "3.0.223",
+          "Microsoft.Extensions.Options": "9.0.5",
+          "OneOf": "3.0.271",
           "Remora.Results": "8.0.0"
         }
       },
       "Remora.Discord.API": {
         "type": "Transitive",
-        "resolved": "79.0.0",
-        "contentHash": "b9lE71pegV1Zup9ftiVLDdEGmOg7L7AstL0ef/M/LDGDkYIFbWnyPfUmjaF3N6fh4N7xWV1BE8a/JOHIViZ/HQ==",
+        "resolved": "80.0.0",
+        "contentHash": "SrU07yeCLvlNslHka+CTvsTVEqmFAOSjQPb6u8zTnxbKeCFR5M+muCzqktdOFd97Ej3NUSxQL4WBoiLOzgUiRA==",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "9.0.2",
-          "Microsoft.Extensions.Options": "9.0.2",
-          "Remora.Discord.API.Abstractions": "83.0.0",
+          "Microsoft.Extensions.DependencyInjection": "9.0.5",
+          "Microsoft.Extensions.Options": "9.0.5",
+          "Remora.Discord.API.Abstractions": "84.0.0",
           "Remora.Rest": "4.0.0",
-          "System.Text.Json": "9.0.2"
+          "System.Text.Json": "9.0.5"
         }
       },
       "Remora.Discord.API.Abstractions": {
         "type": "Transitive",
-        "resolved": "83.0.0",
-        "contentHash": "nc9FD5C1/BB377E6+QzeIc3PODDylQlzZ597cpuEhObsvrRFihY3KJe/weIu4FWqtAIhB2HUHyq9T9J/zcCjkg==",
+        "resolved": "84.0.0",
+        "contentHash": "DdfxRirQsuZfXc58JLPFpSazfc8MnY76MHLqCJQya8krulIxBNU7Vdi4cnlj+T1kHolsZDAiJr93hfP3T3A6xw==",
         "dependencies": {
           "OneOf": "3.0.271",
           "Remora.Rest.Core": "3.0.0",
@@ -816,72 +821,72 @@
       },
       "Remora.Discord.Caching": {
         "type": "Transitive",
-        "resolved": "40.0.0",
-        "contentHash": "CiAS5cGtg0XbsHvWPGjI71uvaeM+yF7hipp1qFsMUe5IOrsdlLJOm8JB1JQ3SEYpwvkSaHCxz8esg5VxNUA0wQ==",
+        "resolved": "40.0.1",
+        "contentHash": "QrkFnHMtTzYGvYJAoc7JsllFZDVKFKzp9XPbQs3JN2bVhDCkRygMs51jDUQFaN+h8f2/PS29lvS0shwVeTBn0A==",
         "dependencies": {
-          "Remora.Discord.Caching.Abstractions": "2.0.0",
-          "Remora.Discord.Gateway": "13.0.0"
+          "Remora.Discord.Caching.Abstractions": "2.0.1",
+          "Remora.Discord.Gateway": "13.0.1"
         }
       },
       "Remora.Discord.Caching.Abstractions": {
         "type": "Transitive",
-        "resolved": "2.0.0",
-        "contentHash": "21soY03GB6EjZf70rSWC+jhr8JsBIJ153dw4HhTdahnsEscVOqjW6wNTfM0jdNLVVlxaXcwKJuKS2abAqDsXsQ==",
+        "resolved": "2.0.1",
+        "contentHash": "AROvCW5l6c6+AEZdNPqUES4rsUOKqVzL+l0pCtmzOVm8xApHDUBNXVRYnjkpCvbV0e1c0OmmTJMUydF+h8R79w==",
         "dependencies": {
-          "Microsoft.Extensions.Caching.Abstractions": "9.0.2",
+          "Microsoft.Extensions.Caching.Abstractions": "9.0.5",
           "Remora.Results": "8.0.0"
         }
       },
       "Remora.Discord.Extensions": {
         "type": "Transitive",
-        "resolved": "6.0.0",
-        "contentHash": "ySOA4eDmfBNOpwVQReNqP3qAi3DMQN2mwKCrYbr8FRUrZCz8SZZEnoX8JFUvq7ZnfkSRME6bgMJw917T++nngQ==",
+        "resolved": "6.0.1",
+        "contentHash": "eQVg8tj5xbcoucn4uqbA1bfaRfu3mFMdVjccF9QzFoXGCmjPom1XSTXV6Bh0O/EQNT/StGu/mUPlkjNUu/tVLg==",
         "dependencies": {
-          "Remora.Discord.API": "79.0.0",
-          "Remora.Discord.Commands": "29.0.0",
-          "Remora.Discord.Gateway": "13.0.0",
-          "Remora.Discord.Interactivity": "6.0.0"
+          "Remora.Discord.API": "80.0.0",
+          "Remora.Discord.Commands": "30.0.0",
+          "Remora.Discord.Gateway": "13.0.1",
+          "Remora.Discord.Interactivity": "6.0.1"
         }
       },
       "Remora.Discord.Gateway": {
         "type": "Transitive",
-        "resolved": "13.0.0",
-        "contentHash": "R+pnwTb4YqWMkuHKbDfM7w/zVLdo44L7Vi8gA1YS4DrHPyW/jTnDOOmTEv9GgT31mV9/1r7tebSOLGp7pxi36Q==",
+        "resolved": "13.0.1",
+        "contentHash": "7KFUlHMNcDnBkUxmlTM93mOoHX00iD0+m6bZs91t0AkjuiQLd8Ks3OrvRu0jYUXEHaNOjn1/+Gb9tyKWAgcIwA==",
         "dependencies": {
           "CommunityToolkit.HighPerformance": "8.4.0",
-          "Remora.Discord.Rest": "52.0.0",
+          "Remora.Discord.Rest": "53.0.0",
           "Remora.Extensions.Options.Immutable": "2.0.0",
-          "System.Threading.Channels": "9.0.2"
+          "System.Threading.Channels": "9.0.5"
         }
       },
       "Remora.Discord.Interactivity": {
         "type": "Transitive",
-        "resolved": "6.0.0",
-        "contentHash": "49tkFfL4Is9J+z41jHZ7J+ow9oLN3UscvT2HsjtD+cvuS0tKWGh/A9Wh4+PryHlOZkReuBMA0IOlQqnNu3If+Q==",
+        "resolved": "6.0.1",
+        "contentHash": "eE70XwdseCmJiA9baDXsU0iJX+5TyvhxXFJuZ8IKlLdX+hy9QQwMQwDWdf7CI0sqHbvlyl/qBjm9D3amSawsqg==",
         "dependencies": {
-          "Remora.Discord.Commands": "29.0.0",
-          "Remora.Discord.Gateway": "13.0.0"
+          "Remora.Discord.Commands": "30.0.0",
+          "Remora.Discord.Gateway": "13.0.1"
         }
       },
       "Remora.Discord.Pagination": {
         "type": "Transitive",
-        "resolved": "5.0.0",
-        "contentHash": "7fHIiiSqDo4LIzq+sMsw9JiNp8nNsvaAZxEqZLvAixHd3xyb9VMYQxT0+LP7NsPAeqg+M2YlPKofjRDuUQ1Ksg==",
+        "resolved": "5.1.0",
+        "contentHash": "5K6wWaHc2IehIkmLIMXJTMQINq0tq+Akoq22vtH1xLicr/+nYpJfD5J363zNn9YDKeuSH7NmN2/wW8AlpIXbVg==",
         "dependencies": {
-          "Remora.Discord.Interactivity": "6.0.0"
+          "Remora.Discord.Interactivity": "6.0.1"
         }
       },
       "Remora.Discord.Rest": {
         "type": "Transitive",
-        "resolved": "52.0.0",
-        "contentHash": "ew4KnOIi3KL+yCB3k9XKhvF8wgsOLSgWdpyjH3WLiXRejHqDkKE0G7OJieJgaWIlHEJZ3X7WSuG8eM7z5Z+upw==",
+        "resolved": "53.0.0",
+        "contentHash": "wADLIA1SgGoTbVdV00wisZsQC3bTwgd/q1U2W21eCbIOG8th1ySyp8VortMZ0J89pYpkV/wxYqyJ8AzQRcWnmw==",
         "dependencies": {
-          "Microsoft.Extensions.Caching.Memory": "9.0.2",
-          "Microsoft.Extensions.Http.Polly": "9.0.2",
+          "Microsoft.Extensions.Caching.Memory": "9.0.5",
+          "Microsoft.Extensions.Http.Polly": "9.0.5",
           "Polly": "8.5.2",
           "Polly.Contrib.WaitAndRetry": "1.1.1",
-          "Remora.Discord.API": "79.0.0",
-          "Remora.Discord.Caching.Abstractions": "2.0.0"
+          "Remora.Discord.API": "80.0.0",
+          "Remora.Discord.Caching.Abstractions": "2.0.1"
         }
       },
       "Remora.Extensions.Options.Immutable": {
@@ -1023,13 +1028,13 @@
       },
       "System.Text.Json": {
         "type": "Transitive",
-        "resolved": "9.0.2",
-        "contentHash": "4TY2Yokh5Xp8XHFhsY9y84yokS7B0rhkaZCXuRiKppIiKwPVH4lVSFD9EEFzRpXdBM5ZeZXD43tc2vB6njEwwQ=="
+        "resolved": "9.0.5",
+        "contentHash": "rnP61ZfloTgPQPe7ecr36loNiGX3g1PocxlKHdY/FUpDSsExKkTxpMAlB4X35wNEPr1X7mkYZuQvW3Lhxmu7KA=="
       },
       "System.Threading.Channels": {
         "type": "Transitive",
-        "resolved": "9.0.2",
-        "contentHash": "pUmqkuBS9OxWHOlfNad09Oxc8gRbxgN9UQtsqHPst4jfcgZRxQetNcsT2oe+VnUpEFAtBy1FZcJZiOscrBmA7g=="
+        "resolved": "9.0.5",
+        "contentHash": "mxPWL9cgQos5PipA/1kg+GdG90HmMycQ077S5mlIWu+V1CGgVbmFiWcKRL+EQPSR8pmW1yVfzGEOrv0IJnrphA=="
       },
       "System.Threading.Tasks.Dataflow": {
         "type": "Transitive",
@@ -1058,12 +1063,6 @@
           "Npgsql.NetTopologySuite": "8.0.6",
           "Weasel.Core": "7.14.2"
         }
-      },
-      "Microsoft.CodeAnalysis.Analyzers": {
-        "type": "CentralTransitive",
-        "requested": "[3.3.4, )",
-        "resolved": "3.3.4",
-        "contentHash": "AxkxcPR+rheX0SmvpLVIGLhOUXAKG56a64kV9VQZ4y9gR9ZmPXnqZvHJnmwLSwzrEP6junUF11vuc+aqo5r68g=="
       }
     },
     "net9.0/linux-x64": {
