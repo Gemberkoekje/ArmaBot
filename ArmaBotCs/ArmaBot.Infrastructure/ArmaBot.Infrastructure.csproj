@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
@@ -12,5 +12,9 @@
     <PackageReference Include="Remora.Discord" />
     <PackageReference Include="Remora.Discord.Commands" />
     <PackageReference Include="Remora.Discord.Hosting" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\ArmaBot.Core\ArmaBot.Core.csproj" />
   </ItemGroup>
 </Project>

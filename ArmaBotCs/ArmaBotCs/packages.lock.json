@@ -1069,6 +1069,7 @@
       "armabot.infrastructure": {
         "type": "Project",
         "dependencies": {
+          "ArmaBot.Core": "[1.0.0, )",
           "Marten": "[7.40.5, )",
           "Microsoft.Extensions.Hosting": "[9.0.5, )",
           "Qowaiv": "[7.4.2, )",

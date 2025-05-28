@@ -182,6 +182,11 @@
         "resolved": "4.2.2",
         "contentHash": "7n66TOtUOSo75V70WenPbhWEJj+Cdd+V+GBIhIv3iEWtbAyZbWX79zw7sWLq3E+tY0mpsHVMcreaom3wuK34Bg=="
       },
+      "FluentValidation": {
+        "type": "Transitive",
+        "resolved": "11.10.0",
+        "contentHash": "qsJGSJDdZ8qiG+lVJ70PZfJHcEdq8UQZ/tZDXoj78/iHKG6lVKtMJsD11zyyv/IPc7rwqGqnFoFLTNzpo3IPYg=="
+      },
       "FSharp.Core": {
         "type": "Transitive",
         "resolved": "8.0.100",
@@ -1069,6 +1074,29 @@
           "Npgsql": "8.0.6",
           "Npgsql.NetTopologySuite": "8.0.6",
           "Weasel.Core": "7.14.2"
+        }
+      },
+      "armabot.core": {
+        "type": "Project",
+        "dependencies": {
+          "Microsoft.Extensions.Hosting": "[9.0.5, )",
+          "Qowaiv": "[7.4.2, )",
+          "Qowaiv.DomainModel": "[2.0.0, )",
+          "Qowaiv.Validation.Fluent": "[2.0.0, )",
+          "Remora.Discord": "[2025.2.0, )",
+          "Remora.Discord.Commands": "[30.0.0, )",
+          "Remora.Discord.Hosting": "[7.0.1, )"
+        }
+      },
+      "Qowaiv.Validation.Fluent": {
+        "type": "CentralTransitive",
+        "requested": "[2.0.0, )",
+        "resolved": "2.0.0",
+        "contentHash": "lam3WRBchKrqSDBIpYjpHrQorRxOEJlZBlez1DVuKVa22ikn1hBEEbdLE6nUIvQuYuHaMdTLhaRCfbYSOKyQ3A==",
+        "dependencies": {
+          "FluentValidation": "11.10.0",
+          "Qowaiv": "7.2.0",
+          "Qowaiv.Validation.Abstractions": "1.0.0"
         }
       }
     },
