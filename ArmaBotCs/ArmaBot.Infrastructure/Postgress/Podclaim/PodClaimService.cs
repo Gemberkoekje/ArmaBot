@@ -32,7 +32,7 @@ public sealed class PodClaimService(IDocumentStore store) : IPodClaimService, ID
     /// </returns>
     public async Task<bool> TryClaimPodAsync(string discordToken, string podId, CancellationToken cancellationToken)
     {
-        Console.WriteLine($"{discordToken.GetHashCode()}, {podId.GetHashCode()}");
+        Console.WriteLine($"Starting tryclaimpod: {discordToken.GetHashCode()}, {podId.GetHashCode()}");
         using var session = store.LightweightSession();
 
         var existing = await session.Query<PodClaim>()
