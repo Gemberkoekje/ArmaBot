@@ -24,6 +24,7 @@ internal sealed class Program
 
         while (true)
         {
+            Console.WriteLine("Starting...");
             // Build a minimal service provider to access configuration and pod claim service
             using var configHost = Host.CreateDefaultBuilder(args)
                 .ConfigureServices((context, services) =>

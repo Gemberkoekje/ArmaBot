@@ -41,6 +41,7 @@ public sealed class PodClaimService(IDocumentStore store) : IPodClaimService, ID
 
         if (existing != null && existing.PodId != podId && existing.ClaimedAt > now - _claimTimeout)
         {
+            Console.WriteLine("Already claimed");
             return false;
         }
 
@@ -59,6 +60,7 @@ public sealed class PodClaimService(IDocumentStore store) : IPodClaimService, ID
         {
             // If we hit a concurrency exception, it means another claim was made in the meantime.
             // We can safely return false here.
+            Console.WriteLine("Concurrency exception");
             return false;
         }
 
