@@ -1,0 +1,18 @@
+Post a mission
+Have a tracked message to update
+Delete a side
+Delete a division
+Delete a subdevision
+Delete a role
+Show a mission
+Show all missions
+Respond to the most recent op
+Unrespond to the most recent op
+Expand info
+Permissions
+Improve Mission Created message
+Improve Reminder message
+
+
+
+Give extra commands to allow json input
