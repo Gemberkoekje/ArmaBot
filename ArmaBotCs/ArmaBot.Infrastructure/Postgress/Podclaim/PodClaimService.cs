@@ -58,7 +58,7 @@ public sealed class PodClaimService(IDocumentStore store) : IPodClaimService, ID
         {
             await session.SaveChangesAsync(cancellationToken);
         }
-        catch (Marten.Exceptions.ConcurrencyException)
+        catch (Marten.Exceptions.ConcurrentUpdateException)
         {
             // If we hit a concurrency exception, it means another claim was made in the meantime.
             // We can safely return false here.
