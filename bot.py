@@ -102,7 +102,7 @@ class Mission:
     
 
 class Reply:
-    missionid: int
+    Guid: int
     response: Response
     side: Sides
     primaryPickId: int
@@ -118,7 +118,7 @@ class Player:
 class TrackedMessage:
     messageid: int
     channelid: int
-    missionid: int
+    Guid: int
 
 def save_error(exception : Exception ):
     errors = load_errors()
@@ -167,7 +167,7 @@ async def update_trackedmessages(client : Client, mymission : Mission):
         missions = load_missions()
         players = load_players()
         for trackedmessage in trackedmessages:
-            if trackedmessage.missionid == mymission.id:
+            if trackedmessage.Guid == mymission.id:
                 print("Mission found for update")
                 channel = await client.fetch_channel(trackedmessage.channelid)
                 message = await channel.fetch_message(trackedmessage.messageid)
@@ -205,7 +205,7 @@ async def update_trackedmessages(client : Client, mymission : Mission):
                 for player in players:
                     myreply : Reply = None
                     for reply in player.replies:
-                        if reply.missionid == mymission.id:
+                        if reply.Guid == mymission.id:
                             myreply = reply
                     if myreply is not None:
                         if myreply.response == Response.Maybe:
@@ -311,17 +311,17 @@ async def missioncreate(interaction: Interaction, campaign: str, modset: str, op
     guild=discord.Object(id=GUILDID)
 )
 @app_commands.default_permissions(manage_channels=True)
-async def missionpost(interaction: Interaction, missionid: int):
+async def missionpost(interaction: Interaction, Guid: int):
     try:
         missions = load_missions()
         mymission = None
         for mission in missions:
-            if missionid == mission.id:
+            if Guid == mission.id:
                 mymission = mission
                 print("Mission found for post")
                 break
         if mymission == None:
-            await interaction.response.send_message("Mission " + str(missionid) + " not found", ephemeral= True)
+            await interaction.response.send_message("Mission " + str(Guid) + " not found", ephemeral= True)
             return
         channel = await client.fetch_channel(mymission.channel)
         scheduler.add_job(print_reminder, 'date', run_date=mymission.date - timedelta(minutes=30), args=[mymission, client, channel.id])
@@ -335,7 +335,7 @@ async def missionpost(interaction: Interaction, missionid: int):
         newtrackedmessage = TrackedMessage()
         newtrackedmessage.channelid = channel.id
         newtrackedmessage.messageid = newmessage.id
-        newtrackedmessage.missionid = mymission.id
+        newtrackedmessage.Guid = mymission.id
         trackedmessages.append(newtrackedmessage)
         save_trackedmessages(trackedmessages)
         await update_trackedmessages(interaction.client, mymission)
@@ -350,17 +350,17 @@ async def missionpost(interaction: Interaction, missionid: int):
     guild=discord.Object(id=GUILDID)
 )
 @app_commands.default_permissions(manage_channels=True)
-async def missionaddside(interaction: Interaction, missionid: int, side: Sides):
+async def missionaddside(interaction: Interaction, Guid: int, side: Sides):
     try:
         missions = load_missions()
         mymission = None
         for mission in missions:
-            if missionid == mission.id:
+            if Guid == mission.id:
                 mymission = mission
                 print("Mission found for addside")
                 break
         if mymission == None:
-            await interaction.response.send_message("Mission " + str(missionid) + " not found", ephemeral= True)
+            await interaction.response.send_message("Mission " + str(Guid) + " not found", ephemeral= True)
             return
         shouldadd = True
         for queryside in mymission.sides:
@@ -385,16 +385,16 @@ async def missionaddside(interaction: Interaction, missionid: int, side: Sides):
     guild=discord.Object(id=GUILDID)
 )
 @app_commands.default_permissions(manage_channels=True)
-async def missiondeleteside(interaction: Interaction, missionid: int, side: Sides):
+async def missiondeleteside(interaction: Interaction, Guid: int, side: Sides):
     try:
         missions = load_missions()
         mymission = None
         for mission in missions:
-            if missionid == mission.id:
+            if Guid == mission.id:
                 mymission = mission
                 print("Mission found")
         if mymission == None:
-            await interaction.response.send_message("Mission " + str(missionid) + " not found", ephemeral= True)
+            await interaction.response.send_message("Mission " + str(Guid) + " not found", ephemeral= True)
             return
         myside = None
         for queryside in mymission.sides:
@@ -418,16 +418,16 @@ async def missiondeleteside(interaction: Interaction, missionid: int, side: Side
     guild=discord.Object(id=GUILDID)
 )
 @app_commands.default_permissions(manage_channels=True)
-async def missionadddescription(interaction: Interaction, missionid: int, description: str):
+async def missionadddescription(interaction: Interaction, Guid: int, description: str):
     try:
         missions = load_missions()
         mymission = None
         for mission in missions:
-            if missionid == mission.id:
+            if Guid == mission.id:
                 mymission = mission
                 print("Mission found")
         if mymission == None:
-            await interaction.response.send_message("Mission " + str(missionid) + " not found", ephemeral= True)
+            await interaction.response.send_message("Mission " + str(Guid) + " not found", ephemeral= True)
             return
         mymission.description = description
         save_missions(missions)
@@ -444,16 +444,16 @@ async def missionadddescription(interaction: Interaction, missionid: int, descri
     guild=discord.Object(id=GUILDID)
 )
 @app_commands.default_permissions(manage_channels=True)
-async def missionadddivision(interaction: Interaction, missionid: int, side: Sides, division: str):
+async def missionadddivision(interaction: Interaction, Guid: int, side: Sides, division: str):
     try:
         missions = load_missions()
         mymission = None
         for mission in missions:
-            if missionid == mission.id:
+            if Guid == mission.id:
                 mymission = mission
                 print("Mission found")
         if mymission == None:
-            await interaction.response.send_message("Mission " + str(missionid) + " not found", ephemeral= True)
+            await interaction.response.send_message("Mission " + str(Guid) + " not found", ephemeral= True)
             return
         myside = None
         for queryside in mymission.sides:
@@ -488,16 +488,16 @@ async def missionadddivision(interaction: Interaction, missionid: int, side: Sid
     guild=discord.Object(id=GUILDID)
 )
 @app_commands.default_permissions(manage_channels=True)
-async def missiondeletedivision(interaction: Interaction, missionid: int, side: Sides, division: str):
+async def missiondeletedivision(interaction: Interaction, Guid: int, side: Sides, division: str):
     try:
         missions = load_missions()
         mymission = None
         for mission in missions:
-            if missionid == mission.id:
+            if Guid == mission.id:
                 mymission = mission
                 print("Mission found")
         if mymission == None:
-            await interaction.response.send_message("Mission " + str(missionid) + " not found", ephemeral= True)
+            await interaction.response.send_message("Mission " + str(Guid) + " not found", ephemeral= True)
             return
         myside = None
         for queryside in mymission.sides:
@@ -529,16 +529,16 @@ async def missiondeletedivision(interaction: Interaction, missionid: int, side: 
     guild=discord.Object(id=GUILDID)
 )
 @app_commands.default_permissions(manage_channels=True)
-async def missionaddsubdivision(interaction: Interaction, missionid: int, side: Sides, division: str, subdivision: str):
+async def missionaddsubdivision(interaction: Interaction, Guid: int, side: Sides, division: str, subdivision: str):
     try:
         missions = load_missions()
         mymission = None
         for mission in missions:
-            if missionid == mission.id:
+            if Guid == mission.id:
                 mymission = mission
                 print("Mission found")
         if mymission == None:
-            await interaction.response.send_message("Mission " + str(missionid) + " not found", ephemeral= True)
+            await interaction.response.send_message("Mission " + str(Guid) + " not found", ephemeral= True)
             return
         myside = None
         for queryside in mymission.sides:
@@ -580,16 +580,16 @@ async def missionaddsubdivision(interaction: Interaction, missionid: int, side: 
     guild=discord.Object(id=GUILDID)
 )
 @app_commands.default_permissions(manage_channels=True)
-async def missiondeletesubdivision(interaction: Interaction, missionid: int, side: Sides, division: str, subdivision: str):
+async def missiondeletesubdivision(interaction: Interaction, Guid: int, side: Sides, division: str, subdivision: str):
     try:
         missions = load_missions()
         mymission = None
         for mission in missions:
-            if missionid == mission.id:
+            if Guid == mission.id:
                 mymission = mission
                 print("Mission found")
         if mymission == None:
-            await interaction.response.send_message("Mission " + str(missionid) + " not found", ephemeral= True)
+            await interaction.response.send_message("Mission " + str(Guid) + " not found", ephemeral= True)
             return
         myside = None
         for queryside in mymission.sides:
@@ -629,16 +629,16 @@ async def missiondeletesubdivision(interaction: Interaction, missionid: int, sid
     guild=discord.Object(id=GUILDID)
 )
 @app_commands.default_permissions(manage_channels=True)
-async def missionaddrole(interaction: Interaction, missionid: int, side: Sides, division: str, subdivision: str, role: Roles):
+async def missionaddrole(interaction: Interaction, Guid: int, side: Sides, division: str, subdivision: str, role: Roles):
     try:
         missions = load_missions()
         mymission = None
         for mission in missions:
-            if missionid == mission.id:
+            if Guid == mission.id:
                 mymission = mission
                 print("Mission found")
         if mymission == None:
-            await interaction.response.send_message("Mission " + str(missionid) + " not found", ephemeral= True)
+            await interaction.response.send_message("Mission " + str(Guid) + " not found", ephemeral= True)
             return
         myside = None
         for queryside in mymission.sides:
@@ -683,16 +683,16 @@ async def missionaddrole(interaction: Interaction, missionid: int, side: Sides, 
     guild=discord.Object(id=GUILDID)
 )
 @app_commands.default_permissions(manage_channels=True)
-async def missiondeleterole(interaction: Interaction, missionid: int, side: Sides, division: str, subdivision: str, role: Roles):
+async def missiondeleterole(interaction: Interaction, Guid: int, side: Sides, division: str, subdivision: str, role: Roles):
     try:
         missions = load_missions()
         mymission = None
         for mission in missions:
-            if missionid == mission.id:
+            if Guid == mission.id:
                 mymission = mission
                 print("Mission found")
         if mymission == None:
-            await interaction.response.send_message("Mission " + str(missionid) + " not found", ephemeral= True)
+            await interaction.response.send_message("Mission " + str(Guid) + " not found", ephemeral= True)
             return
         myside = None
         for queryside in mymission.sides:
@@ -731,11 +731,11 @@ async def missiondeleterole(interaction: Interaction, missionid: int, side: Side
     guild=discord.Object(id=GUILDID)
 )
 @app_commands.default_permissions(manage_channels=True)
-async def missionshow(interaction: Interaction, missionid: int):
+async def missionshow(interaction: Interaction, Guid: int):
     try:
         missions = load_missions()
         for mission in missions:
-            if missionid == mission.id:
+            if Guid == mission.id:
                 mymission = mission
         myembed=discord.Embed(
             title= "mission "+ mission.op,
@@ -794,7 +794,7 @@ async def missionlist(interaction):
     description="Respond to the most recent op",
     guild=discord.Object(id=GUILDID)
 )
-async def respond(interaction: Interaction, rsvp: Response, side: Sides, primaryrole:  Roles, secondaryrole: typing.Optional[Roles], tertiaryrole: typing.Optional[Roles], missionid: typing.Optional[int]):
+async def respond(interaction: Interaction, rsvp: Response, side: Sides, primaryrole:  Roles, secondaryrole: typing.Optional[Roles], tertiaryrole: typing.Optional[Roles], Guid: typing.Optional[int]):
     try:
         players = load_players()
         myplayer = None
@@ -811,7 +811,7 @@ async def respond(interaction: Interaction, rsvp: Response, side: Sides, primary
         missions = load_missions()
         mymission = None
         for mission in missions:
-            if(mission.date > datetime.now()) or mission.id == missionid:
+            if(mission.date > datetime.now()) or mission.id == Guid:
                 mymission = mission
         if mymission is None:
             myembed=discord.Embed(
@@ -851,13 +851,13 @@ async def respond(interaction: Interaction, rsvp: Response, side: Sides, primary
             
         myreply = None
         for reply in myplayer.replies:
-            if reply.missionid == mymission.id:
+            if reply.Guid == mymission.id:
                 myreply = reply
         if myreply is None:
             myreply = Reply()
             myplayer.replies.append(myreply)
             
-        myreply.missionid = mymission.id
+        myreply.Guid = mymission.id
         myreply.response = rsvp,
         myreply.side = side,
         if primaryrole is not None:
@@ -902,7 +902,7 @@ async def respond(interaction: Interaction, rsvp: Response, side: Sides, primary
     description="Unrespond to the most recent op",
     guild=discord.Object(id=GUILDID)
 )
-async def unrespond(interaction: Interaction, missionid: typing.Optional[int]):
+async def unrespond(interaction: Interaction, Guid: typing.Optional[int]):
     try:
         players = load_players()
         myplayer = None
@@ -919,7 +919,7 @@ async def unrespond(interaction: Interaction, missionid: typing.Optional[int]):
         missions = load_missions()
         mymission = None
         for mission in missions:
-            if(mission.date > datetime.now()) or mission.id == missionid:
+            if(mission.date > datetime.now()) or mission.id == Guid:
                 mymission = mission
         if mymission is None:
             myembed=discord.Embed(
@@ -931,7 +931,7 @@ async def unrespond(interaction: Interaction, missionid: typing.Optional[int]):
 
         myreply = None
         for reply in myplayer.replies:
-            if reply.missionid == mymission.id:
+            if reply.Guid == mymission.id:
                 myreply = reply
         if myreply != None:
             myplayer.replies.remove(myreply)

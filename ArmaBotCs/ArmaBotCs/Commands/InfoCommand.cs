@@ -1,6 +1,7 @@
 using Remora.Commands.Attributes;
 using Remora.Commands.Groups;
 using Remora.Discord.API.Objects;
+using Remora.Discord.Commands.Attributes;
 using Remora.Discord.Commands.Feedback.Services;
 using Remora.Results;
 using System.ComponentModel;
@@ -11,6 +12,7 @@ namespace ArmaBotCs.Commands;
 internal sealed class InfoCommand(FeedbackService feedback) : CommandGroup
 {
     [Command("info")]
+    [Ephemeral]
     [Description("Displays information about the bot.")]
     public async Task<IResult> HandleInfoCommand()
     {

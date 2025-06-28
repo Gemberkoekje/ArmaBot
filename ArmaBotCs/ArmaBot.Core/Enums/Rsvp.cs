@@ -1,8 +1,7 @@
 namespace ArmaBot.Core.Enums;
 
-internal enum Response
+public enum Rsvp
 {
-    None = 0,
     Yes = 1,
     Maybe = 2,
 }

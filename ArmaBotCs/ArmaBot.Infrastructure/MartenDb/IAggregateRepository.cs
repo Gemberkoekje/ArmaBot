@@ -1,13 +1,11 @@
-﻿using ArmaBot.Core.Models;
-using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 
 namespace ArmaBot.Infrastructure.MartenDb;
 
-public interface IAggregateRepository<T> where T : class
+public interface IAggregateRepository<TId, TValue> where TValue : class
 {
-    public Task SaveAsync(T aggregate, CancellationToken cancellationToken);
+    public Task SaveAsync(TValue aggregate, CancellationToken cancellationToken);
 
-    public Task<T> LoadAsync(Guid id, CancellationToken cancellationToken = default);
+    public Task<TValue> LoadAsync(TId id, CancellationToken cancellationToken = default);
 }

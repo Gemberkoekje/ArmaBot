@@ -1,13 +1,12 @@
 ﻿using ArmaBot.Core.Models;
-using ArmaBot.Infrastructure.Interfaces;
-using Marten;
+using ArmaBot.Infrastructure.MartenDb;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ArmaBot.Infrastructure.MartenDb;
+namespace ArmaBotCs.Reminders;
 
-public sealed class UpdateReminderRepository(IAggregateRepository<Mission> aggregateRepository, IDocumentStore store, IUpdateReminderBackgroundTask updateReminderBackgroundTask) : IAggregateRepository<Mission>
+public sealed class UpdateReminderRepository(IAggregateRepository<Guid, Mission> aggregateRepository, IUpdateReminderBackgroundTask updateReminderBackgroundTask) : IAggregateRepository<Guid, Mission>
 {
     public async Task<Mission> LoadAsync(Guid id, CancellationToken cancellationToken = default)
     {
@@ -17,14 +16,11 @@ public sealed class UpdateReminderRepository(IAggregateRepository<Mission> aggre
     public async Task SaveAsync(Mission aggregate, CancellationToken cancellationToken)
     {
         await aggregateRepository.SaveAsync(aggregate, cancellationToken);
-        using var session = store.LightweightSession();
         var reminder = new Reminder()
         {
-            Id = Guid.Parse(aggregate.Id.ToString()),
+            Id = aggregate.Id,
             Date = aggregate.GetMissionData().Date,
         };
-        session.Store(reminder);
-        await session.SaveChangesAsync(cancellationToken);
         await updateReminderBackgroundTask.UpdateReminder(reminder);
     }
 }

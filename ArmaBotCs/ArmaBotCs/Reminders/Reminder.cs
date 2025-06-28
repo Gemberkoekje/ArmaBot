@@ -1,7 +1,6 @@
-﻿using Remora.Rest.Core;
-using System;
+﻿using System;
 
-namespace ArmaBot.Core.Models;
+namespace ArmaBotCs.Reminders;
 
 public record Reminder
 {

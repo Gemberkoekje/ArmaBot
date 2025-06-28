@@ -1,10 +1,8 @@
 ﻿using ArmaBot.Core.Models;
-using ArmaBot.Infrastructure.Interfaces;
 using ArmaBot.Infrastructure.MartenDb;
 using Marten;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Qowaiv.DomainModel;
 using Remora.Discord.API.Abstractions.Rest;
 using System;
 using System.Collections.Generic;
@@ -12,7 +10,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ArmaBotCs;
+namespace ArmaBotCs.Reminders;
 
 public class ReminderBackgroundTask : BackgroundService, IUpdateReminderBackgroundTask
 {
@@ -29,10 +27,16 @@ public class ReminderBackgroundTask : BackgroundService, IUpdateReminderBackgrou
 
     public async Task UpdateReminder(Reminder reminder)
     {
+        using var scope = _serviceProvider.CreateScope();
+        using var session = _serviceProvider.GetService<IDocumentStore>().LightweightSession();
+        session.Store(reminder);
+        await session.SaveChangesAsync();
         var savedReminder = Reminders.FirstOrDefault(r => r.Id == reminder.Id);
         if (savedReminder != null)
         {
+            Reminders.Remove(savedReminder);
             savedReminder = savedReminder with { Date = reminder.Date};
+            Reminders.Add(savedReminder);
         }
         else
         {
@@ -46,7 +50,7 @@ public class ReminderBackgroundTask : BackgroundService, IUpdateReminderBackgrou
         {
             var now = DateTime.UtcNow;
             var dueReminders = Reminders
-                .Where(r => r.Date <= now)
+                .Where(r => r.Date.AddMinutes(-30) <= now)
                 .ToList();
 
             foreach (var reminder in dueReminders)
@@ -67,12 +71,13 @@ public class ReminderBackgroundTask : BackgroundService, IUpdateReminderBackgrou
     private async Task SendDiscordMessageAsync(Reminder reminder, CancellationToken token)
     {
         using var scope = _serviceProvider.CreateScope();
-        var _repository = scope.ServiceProvider.GetService<IAggregateRepository<Mission>>();
-        var _channelApi = scope.ServiceProvider.GetService<IDiscordRestChannelAPI>();
-        var mission = await _repository.LoadAsync(reminder.Id, token);
-        var result = await _channelApi.CreateMessageAsync(
+        var repository = scope.ServiceProvider.GetService<IAggregateRepository<Guid, Mission>>();
+        var channelApi = scope.ServiceProvider.GetService<IDiscordRestChannelAPI>();
+        var mission = await repository.LoadAsync(reminder.Id, token);
+        var unixTimestamp = new DateTimeOffset(mission.GetMissionData().Date).ToUnixTimeSeconds();
+        var result = await channelApi.CreateMessageAsync(
             mission.GetMissionData().Channel, // This should be a Snowflake
-            $"<@&{mission.GetMissionData().RoleToPing}>⏰ Reminder: {mission.GetMissionData().Op} is due at {reminder.Date:u}",
+            $"<@&{mission.GetMissionData().RoleToPing}>⏰ Reminder: {mission.GetMissionData().Op} will start on <t:{unixTimestamp}:F> (<t:{unixTimestamp}:R>)",
             ct: token
         );
 
