@@ -48,6 +48,11 @@ public sealed class ReminderBackgroundTask : BackgroundService, IUpdateReminderB
     /// <returns>A task representing the asynchronous update operation.</returns>
     public async Task UpdateReminderAsync(Reminder reminder)
     {
+        if (reminder.Date < Clock.UtcNow())
+        {
+            // Don't save a reminder in the past
+            return;
+        }
         using var scope = ServiceProvider.CreateScope();
         using var session = ServiceProvider.GetService<IDocumentStore>().LightweightSession();
         session.Store(reminder);
