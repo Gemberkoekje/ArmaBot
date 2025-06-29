@@ -1,8 +1,9 @@
-﻿using ArmaBot.Core.Models;
+using ArmaBot.Core.Models;
 using ArmaBot.Infrastructure.MartenDb;
 using Marten;
 using Microsoft.Extensions.DependencyInjection;
 using Remora.Discord.API.Abstractions.Rest;
+using Remora.Rest.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,18 @@ using System.Threading.Tasks;
 
 namespace ArmaBotCs.Posts;
 
+/// <summary>
+/// Provides functionality to manage and update mission posts within a Discord guild, including adding, updating, and retrieving posts.
+/// </summary>
 public sealed class PostUpdater : IPostRepository
 {
-    private List<Post> Posts;
+    private readonly List<Post> Posts;
     private readonly IServiceProvider _serviceProvider;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="PostUpdater"/> class and loads existing posts from the database.
+    /// </summary>
+    /// <param name="serviceProvider">The service provider used to resolve dependencies and database sessions.</param>
     public PostUpdater(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
@@ -22,6 +30,11 @@ public sealed class PostUpdater : IPostRepository
         Posts = session.Query<Post>().ToList();
     }
 
+    /// <summary>
+    /// Adds a new post to the repository and updates the corresponding mission post in Discord.
+    /// </summary>
+    /// <param name="post">The <see cref="Post"/> object containing post details to add.</param>
+    /// <returns>A task representing the asynchronous add operation.</returns>
     public async Task AddPost(Post post)
     {
         using var scope = _serviceProvider.CreateScope();
@@ -40,10 +53,17 @@ public sealed class PostUpdater : IPostRepository
             Posts.Add(post);
         }
 
-        await UpdatePost(post.Id);
+        await UpdatePost(post.Guild, post.Id);
     }
 
-    public async Task UpdatePost(Guid missionId)
+    /// <summary>
+    /// Updates an existing mission post in Discord for a specific guild and mission.
+    /// If the post does not exist, it is created and stored.
+    /// </summary>
+    /// <param name="guild">The Discord guild identifier.</param>
+    /// <param name="missionId">The unique identifier of the mission to update the post for.</param>
+    /// <returns>A task representing the asynchronous update operation.</returns>
+    public async Task UpdatePost(Snowflake guild, Guid missionId)
     {
         using var scope = _serviceProvider.CreateScope();
         var repository = scope.ServiceProvider.GetService<IAggregateRepository<Guid, Mission>>();
@@ -58,6 +78,7 @@ public sealed class PostUpdater : IPostRepository
                 PostId = null,
                 Op = mission.GetMissionData().Op,
                 MissionDate = mission.GetMissionData().Date,
+                Guild = guild,
             };
             Posts.Add(post);
             using var session = _serviceProvider.GetService<IDocumentStore>().LightweightSession();
@@ -71,8 +92,7 @@ public sealed class PostUpdater : IPostRepository
                 mission.GetMissionData().Channel, // This should be a Snowflake
                 post.PostId.Value,
                 $"<@&{mission.GetMissionData().RoleToPing}>",
-                embeds: new[] { mission.GetMissionDataEmbed(), mission.GetMissionSidesEmbed(), mission.GetMissionResponsesEmbed() }
-            );
+                embeds: new[] { mission.GetMissionDataEmbed(), mission.GetMissionSidesEmbed(), mission.GetMissionResponsesEmbed() });
             if (!result.IsSuccess)
             {
                 Console.WriteLine("Failed to update post: " + result.Error.Message);
@@ -80,15 +100,29 @@ public sealed class PostUpdater : IPostRepository
         }
     }
 
-    public Guid? GetMostRecentPost()
+    /// <summary>
+    /// Retrieves the most recent mission post identifier for a given guild.
+    /// </summary>
+    /// <param name="guild">The Discord guild identifier.</param>
+    /// <returns>
+    /// The <see cref="Guid"/> of the most recent post, or <c>null</c> if no posts exist for the guild.
+    /// </returns>
+    public Guid? GetMostRecentPost(Snowflake guild)
     {
-        if (!Posts.Any(p => p.PostId != null))
+        if (!Posts.Any(p => p.Guild == guild && p.PostId != null))
             return null;
-        return Posts.Where(p => p.PostId != null).OrderBy(o => o.MissionDate).Last().Id;
+        return Posts.Where(p => p.Guild == guild && p.PostId != null).OrderBy(o => o.MissionDate).Last().Id;
     }
 
-    public List<Post> GetAllPosts()
+    /// <summary>
+    /// Retrieves all mission posts for a given guild, ordered by mission date.
+    /// </summary>
+    /// <param name="guild">The Discord guild identifier.</param>
+    /// <returns>
+    /// A list of <see cref="Post"/> objects representing all posts for the specified guild.
+    /// </returns>
+    public List<Post> GetAllPosts(Snowflake guild)
     {
-        return Posts.OrderBy(o => o.MissionDate).ToList();
+        return Posts.Where(p => p.Guild == guild).OrderBy(o => o.MissionDate).ToList();
     }
 }

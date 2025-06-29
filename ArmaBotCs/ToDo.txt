@@ -1,7 +1,8 @@
 Expand info
 Permissions
-Improve Mission Created message
-Improve Reminder message
+Improve all messages
+Edit mission info
+Make sure you cannot read missions etc. from other guilds.
 
 
 

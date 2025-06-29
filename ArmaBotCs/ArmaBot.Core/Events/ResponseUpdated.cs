@@ -1,4 +1,4 @@
-﻿using ArmaBot.Core.Models;
+using ArmaBot.Core.Models;
 
 namespace ArmaBot.Core.Events;
 
