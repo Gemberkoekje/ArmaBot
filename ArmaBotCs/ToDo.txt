@@ -1,8 +1,4 @@
-Expand info
-Permissions
 Improve all messages
-Edit mission info
-Make sure you cannot read missions etc. from other guilds.
 
 
 

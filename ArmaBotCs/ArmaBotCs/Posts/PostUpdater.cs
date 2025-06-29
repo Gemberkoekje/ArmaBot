@@ -35,7 +35,7 @@ public sealed class PostUpdater : IPostRepository
     /// </summary>
     /// <param name="post">The <see cref="Post"/> object containing post details to add.</param>
     /// <returns>A task representing the asynchronous add operation.</returns>
-    public async Task AddPost(Post post)
+    public async Task AddPostAsync(Post post)
     {
         using var scope = _serviceProvider.CreateScope();
         using var session = _serviceProvider.GetService<IDocumentStore>().LightweightSession();
@@ -53,7 +53,7 @@ public sealed class PostUpdater : IPostRepository
             Posts.Add(post);
         }
 
-        await UpdatePost(post.Guild, post.Id);
+        await UpdatePostAsync(post.Guild, post.Id);
     }
 
     /// <summary>
@@ -63,7 +63,7 @@ public sealed class PostUpdater : IPostRepository
     /// <param name="guild">The Discord guild identifier.</param>
     /// <param name="missionId">The unique identifier of the mission to update the post for.</param>
     /// <returns>A task representing the asynchronous update operation.</returns>
-    public async Task UpdatePost(Snowflake guild, Guid missionId)
+    public async Task UpdatePostAsync(Snowflake guild, Guid missionId)
     {
         using var scope = _serviceProvider.CreateScope();
         var repository = scope.ServiceProvider.GetService<IAggregateRepository<Guid, Mission>>();

@@ -49,20 +49,25 @@ public partial class Mission
     }
 
     /// <summary>
-    /// Removes a user's response from the mission.
+    /// Removes a user's response from the mission by applying a <see cref="ResponseUpdated"/> event with a "No" RSVP and cleared roles.
     /// </summary>
     /// <param name="user">The unique identifier of the user whose response should be removed.</param>
     /// <returns>
-    /// A <see cref="Result{Mission}"/> indicating the outcome of the operation, including a validation error if the user has not responded.
+    /// A <see cref="Result{Mission}"/> indicating the outcome of the operation.
     /// </returns>
     public Result<Mission> Unrespond(Snowflake user)
     {
-        if (!Responses.Any(r => r.User == user))
-            return Result.WithMessages<Mission>(ValidationMessage.Error("You have not responded to this mission!"));
-
-        return ApplyEvent(new ResponseRemoved()
+        return ApplyEvent(new ResponseUpdated()
         {
-            User = user,
+            Response = new Response
+            {
+                User = user,
+                Rsvp = Enums.Rsvp.No,
+                Side = Enums.Side.None,
+                PrimaryRole = Enums.Role.None,
+                SecondaryRole = Enums.Role.None,
+                TertiaryRole = Enums.Role.None,
+            },
         });
     }
 
@@ -81,15 +86,5 @@ public partial class Mission
         {
             Responses = Responses.Add(@event.Response);
         }
-    }
-
-    /// <summary>
-    /// Handles the <see cref="ResponseRemoved"/> event by removing the user's response from the <see cref="Responses"/> collection.
-    /// </summary>
-    /// <param name="event">The event containing the user whose response should be removed.</param>
-    internal void When(ResponseRemoved @event)
-    {
-        var myResponse = Responses.FirstOrDefault(r => r.User == @event.User);
-        Responses = Responses.Remove(myResponse);
     }
 }

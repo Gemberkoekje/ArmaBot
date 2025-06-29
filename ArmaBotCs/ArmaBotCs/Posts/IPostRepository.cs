@@ -15,7 +15,7 @@ public interface IPostRepository
     /// </summary>
     /// <param name="post">The <see cref="Post"/> object containing post details to add.</param>
     /// <returns>A task representing the asynchronous add operation.</returns>
-    Task AddPost(Post post);
+    Task AddPostAsync(Post post);
 
     /// <summary>
     /// Updates an existing post for a specific guild and mission.
@@ -23,7 +23,7 @@ public interface IPostRepository
     /// <param name="guild">The Discord guild identifier.</param>
     /// <param name="missionId">The unique identifier of the mission to update the post for.</param>
     /// <returns>A task representing the asynchronous update operation.</returns>
-    Task UpdatePost(Snowflake guild, Guid missionId);
+    Task UpdatePostAsync(Snowflake guild, Guid missionId);
 
     /// <summary>
     /// Retrieves the most recent mission post identifier for a given guild.

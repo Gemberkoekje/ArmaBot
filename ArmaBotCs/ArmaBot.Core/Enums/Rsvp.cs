@@ -6,9 +6,9 @@ namespace ArmaBot.Core.Enums;
 public enum Rsvp
 {
     /// <summary>
-    /// No RSVP response has been given.
+    /// Indicates a negative RSVP; the participant will not attend the event.
     /// </summary>
-    None = 0,
+    No = 0,
 
     /// <summary>
     /// Indicates a positive RSVP; the participant will attend the event.
