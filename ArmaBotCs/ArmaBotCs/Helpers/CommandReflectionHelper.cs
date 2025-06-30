@@ -1,6 +1,9 @@
 ﻿#nullable enable
 using Remora.Commands.Attributes;
 using Remora.Commands.Groups;
+using Remora.Discord.API.Abstractions.Objects;
+using Remora.Discord.Commands.Attributes;
+using Remora.Discord.Commands.Conditions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,12 +18,12 @@ namespace ArmaBotCs.Helpers;
 public static class CommandReflectionHelper
 {
     /// <summary>
-    /// Retrieves all commands defined in command groups, including their group name, command name, and optional description.
+    /// Retrieves all commands defined in command groups, including their group name, command name, description, and whether they require ManageChannels.
     /// </summary>
     /// <returns>
-    /// An enumerable of tuples containing the group name, command name, and command description (if available).
+    /// An enumerable of tuples containing the group name, command name, command description (if available), and a bool indicating if ManageChannels is required.
     /// </returns>
-    public static IEnumerable<(string Group, string Command, string? Description)> GetAllCommands()
+    public static IEnumerable<(string Group, string Command, string? Description, bool IsAdministratorCommand)> GetAllCommands()
     {
         var commandGroups = AppDomain.CurrentDomain.GetAssemblies()
             .SelectMany(a => a.GetTypes())
@@ -38,10 +41,15 @@ public static class CommandReflectionHelper
                     continue;
 
                 var descAttr = method.GetCustomAttribute<DescriptionAttribute>();
+                var permAttr = method.GetCustomAttributes()
+                    .OfType<RequireDiscordPermissionAttribute>()
+                    .FirstOrDefault(a => a.Permissions.Contains(DiscordPermission.ManageChannels));
+
                 yield return (
                     Group: groupName,
                     Command: commandAttr.Name,
-                    Description: descAttr?.Description
+                    Description: descAttr?.Description,
+                    IsAdministratorCommand: permAttr != null
                 );
             }
         }

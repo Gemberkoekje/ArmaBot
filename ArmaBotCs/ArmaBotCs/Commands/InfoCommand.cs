@@ -18,9 +18,23 @@ internal sealed class InfoCommand(FeedbackService feedback) : CommandGroup
     [Description("Displays information about the bot.")]
     public async Task<IResult> HandleInfoCommand()
     {
-        var commands = CommandReflectionHelper.GetAllCommands();
-        var infoText = string.Join("\n", commands.Select(c =>
-            $"**/{c.Command}**: {c.Description ?? "No description."}"));
+        var commands = CommandReflectionHelper.GetAllCommands().ToList();
+
+        var everyoneCommands = commands
+            .Where(c => !c.IsAdministratorCommand)
+            .Select(c => $"**/{c.Command}**: {c.Description ?? "No description."}");
+
+        var administratorCommands = commands
+            .Where(c => c.IsAdministratorCommand)
+            .Select(c => $"**/{c.Command}**: {c.Description ?? "No description."}");
+
+        var infoText = string.Join("\n", everyoneCommands);
+
+        if (administratorCommands.Any())
+        {
+            infoText += "\n\n__Administrator commands:__\n";
+            infoText += string.Join("\n", administratorCommands);
+        }
 
         var embed = new Embed(
             Colour: feedback.Theme.Secondary,
