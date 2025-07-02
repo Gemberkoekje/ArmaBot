@@ -7,5 +7,5 @@ internal interface ILocalIdRepository
 {
     public Task<string> GetOrAddLocalIdAsync(Guid missionId);
 
-    public Guid GetMissionIdByLocalId(string localId);
+    public Guid? GetMissionIdByLocalId(string localId);
 }

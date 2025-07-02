@@ -15,10 +15,10 @@ internal sealed class LocalIdRepository : ILocalIdRepository
         _serviceProvider = serviceProvider;
     }
 
-    public Guid GetMissionIdByLocalId(string localId)
+    public Guid? GetMissionIdByLocalId(string localId)
     {
         using var session = _serviceProvider.GetService<IDocumentStore>().QuerySession();
-        return session.Query<LocalId>().FirstOrDefault(x => x.Id == localId).MissionId;
+        return session.Query<LocalId>().FirstOrDefault(x => x.Id == localId)?.MissionId;
     }
 
     public async Task<string> GetOrAddLocalIdAsync(Guid missionId)
