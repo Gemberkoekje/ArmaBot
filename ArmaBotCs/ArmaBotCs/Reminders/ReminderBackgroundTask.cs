@@ -82,7 +82,7 @@ public sealed class ReminderBackgroundTask : BackgroundService, IUpdateReminderB
         {
             var now = Clock.UtcNow();
             var dueReminders = Reminders
-                .Where(r => r.Date.AddMinutes(-30) <= now)
+                .Where(r => r.Date.AddMinutes(-31) <= now)
                 .ToList();
 
             foreach (var reminder in dueReminders)
