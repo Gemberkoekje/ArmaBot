@@ -1,5 +1,6 @@
 using ArmaBot.Core.Models;
 using ArmaBot.Infrastructure.MartenDb;
+using ArmaBotCs.LocalId;
 using Marten;
 using Microsoft.Extensions.DependencyInjection;
 using Remora.Discord.API.Abstractions.Rest;
@@ -85,14 +86,14 @@ public sealed class PostUpdater : IPostRepository
             session.Store(post);
             await session.SaveChangesAsync();
         }
-
+        var localIdRepository = _serviceProvider.GetService<ILocalIdRepository>();
         if (mission != null && post.PostId != null)
         {
             var result = await channelApi.EditMessageAsync(
                 mission.GetMissionData().Channel, // This should be a Snowflake
                 post.PostId.Value,
                 $"<@&{mission.GetMissionData().RoleToPing}>",
-                embeds: new[] { mission.GetMissionDataEmbed(), mission.GetMissionSidesEmbed(), mission.GetMissionResponsesEmbed() });
+                embeds: new[] { mission.GetMissionDataEmbed(await localIdRepository.GetOrAddLocalIdAsync(mission.Id)), mission.GetMissionSidesEmbed(), mission.GetMissionResponsesEmbed() });
             if (!result.IsSuccess)
             {
                 Console.WriteLine("Failed to update post: " + result.Error.Message);
