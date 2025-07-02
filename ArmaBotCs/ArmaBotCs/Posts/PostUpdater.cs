@@ -1,6 +1,7 @@
 using ArmaBot.Core.Models;
 using ArmaBot.Infrastructure.MartenDb;
 using ArmaBotCs.LocalId;
+using ArmaBotCs.Reminders;
 using Marten;
 using Microsoft.Extensions.DependencyInjection;
 using Remora.Discord.API.Abstractions.Rest;
@@ -98,6 +99,14 @@ public sealed class PostUpdater : IPostRepository
             {
                 Console.WriteLine("Failed to update post: " + result.Error.Message);
             }
+
+            var updateReminder = scope.ServiceProvider.GetService<IUpdateReminderBackgroundTask>();
+            await updateReminder.UpdateReminderAsync(new Reminder()
+            {
+                Guild = guild,
+                Id = missionId,
+                Date = mission.GetMissionData().Date,
+            });
         }
     }
 
