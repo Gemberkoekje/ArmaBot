@@ -48,7 +48,7 @@ public sealed class ReminderBackgroundTask : BackgroundService, IUpdateReminderB
     /// <returns>A task representing the asynchronous update operation.</returns>
     public async Task UpdateReminderAsync(Reminder reminder)
     {
-        if (reminder.Date < Clock.UtcNow())
+        if (reminder.Date.AddMinutes(-31) < Clock.UtcNow())
         {
             // Don't save a reminder in the past
             return;
