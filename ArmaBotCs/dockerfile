@@ -12,7 +12,7 @@ RUN dotnet restore ArmaBotCs.slnx  --locked-mode
 RUN dotnet publish ArmaBotCs/ArmaBotCs.csproj -c Release -o /app/publish --no-restore
 
 # Build runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS final
 WORKDIR /app
 COPY --from=build /app/publish .
 ENTRYPOINT ["dotnet", "ArmaBotCs.dll"]
