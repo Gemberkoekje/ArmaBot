@@ -48,6 +48,8 @@ jobs:
         echo "## Build Version" >> $GITHUB_STEP_SUMMARY
         echo "${{ steps.get_version.outputs.version }}-${{ github.run_number }}" >> $GITHUB_STEP_SUMMARY
 
+    # Layer cache in the GitHub Actions cache, so unchanged layers are not rebuilt (or re-downloaded)
+    # on the next run. ignore-error: a cache-service hiccup must not fail the build and push.
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
       with:
@@ -56,3 +58,5 @@ jobs:
         tags: |
           ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.get_version.outputs.version }}-${{ github.run_number }}
+        cache-from: type=gha,scope=armabotcs
+        cache-to: type=gha,mode=max,scope=armabotcs,ignore-error=true
